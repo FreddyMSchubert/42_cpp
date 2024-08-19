@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:13:09 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 16:58:24 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:03:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	PhoneBook::Search()
 	
 		break;
 	}
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 	// 3. Display detailed contact
 	contacts[index].PrintContact();
