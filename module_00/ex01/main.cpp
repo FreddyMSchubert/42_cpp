@@ -6,12 +6,12 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:47:16 by freddy            #+#    #+#             */
-/*   Updated: 2024/08/19 15:53:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:40:50 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-#include "PhoneBook.cpp"
+#include "PhoneBook.hpp"
 
 void PrintAvailableCommands()
 {
@@ -46,8 +46,8 @@ int	main(int argc, char **argv)
 
 		if (input == "ADD")
 			phoneBook.Add();
-		// else if (input == "SEARCH")
-		// 	phonebook.search();
+		else if (input == "SEARCH")
+			phoneBook.Search();
 		else if (input == "EXIT" || std::cin.eof())
 			break;
 		else

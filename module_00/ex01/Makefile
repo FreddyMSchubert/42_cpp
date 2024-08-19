@@ -1,6 +1,6 @@
 EXECUTABLE := "phonebook"
 
-SRC := Contact.cpp main.cpp
+SRC := Contact.cpp PhoneBook.cpp Utils.cpp main.cpp
 OBJ := $(SRC:.cpp=.o)
 FLAGS := -Wall -Wextra -Werror -std=c++17
 

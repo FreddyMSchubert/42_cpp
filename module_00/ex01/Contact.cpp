@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:28:02 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 16:00:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:41:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,13 @@ void	Contact::PrintContact()
 void	Contact::PrintTableLine(int index)
 {
 	std::cout << "|";
-	PrintTableCell(std::to_string(index));
+	Utils::PrintTableCell(std::to_string(index));
 	std::cout << "|";
-	PrintTableCell(firstName);
+	Utils::PrintTableCell(firstName);
 	std::cout << "|";
-	PrintTableCell(lastName);
+	Utils::PrintTableCell(lastName);
 	std::cout << "|";
-	PrintTableCell(nickName);
+	Utils::PrintTableCell(nickName);
 	std::cout << "|";
-}
-
-void	Contact::PrintTableCell(std::string data)
-{
-	if (data.length() > 10)
-		std::cout << data.substr(0, 9) << ".";
-	std::cout << std::setw(10) << std::right << data;
+	std::cout << "\n";
 }

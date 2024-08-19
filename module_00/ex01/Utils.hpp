@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 15:13:39 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 16:30:43 by fschuber         ###   ########.fr       */
+/*   Created: 2024/08/19 16:22:00 by fschuber          #+#    #+#             */
+/*   Updated: 2024/08/19 16:36:04 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#ifndef UTILS_HPP
+#define UTILS_HPP
 
-#define MAX_CONTACTS_AMOUNT 2
+#include <iostream>
+#include <iomanip>
 
-#include "Contact.hpp"
-#include "Utils.hpp"
-
-class PhoneBook
+class Utils
 {
 	public:
-		PhoneBook();
-		~PhoneBook();
-
-		Contact	contacts[MAX_CONTACTS_AMOUNT];
-		int		contactsCount;
-
-		void	Add();
-		void	Search();
-
-		int		GetOldestEntry();
-		void	PrintTable();
-		void	PrintTableHeader();
+		static void	PrintTableCell(std::string data);
 };
 
 #endif

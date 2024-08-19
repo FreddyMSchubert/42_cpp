@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:13:09 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 16:14:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:58:24 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,74 @@ int	PhoneBook::GetOldestEntry()
 }
 
 /* ----- SEARCH command ----- */
+
+void	PhoneBook::Search()
+{
+	// 1. Print Overview Table
+	if (contactsCount < 1)
+	{
+		std::cout << "The phonebook is empty! Add some entries using the ADD command first." << std::endl;
+		return;
+	}
+	PrintTable();
+
+	// 2. Select index of choice
+	int index = -1;
+	while (true)
+	{
+		std::cout << "Please input the index of the contact you wish to learn more about:\n> ";
+		std::cin >> index;
+
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Invalid input. Please enter a numeric index." << std::endl;
+			continue;
+		}
+
+		if (index < 0 || index >= contactsCount || !contacts[index].hasData)
+		{
+			std::cout << "Invalid index. Please enter a valid index within the range of existing contacts." << std::endl;
+			continue;
+		}
+	
+		break;
+	}
+
+	// 3. Display detailed contact
+	contacts[index].PrintContact();
+}
+
+void	PhoneBook::PrintTable()
+{
+	PrintTableHeader();
+	for (int i = 0; i < MAX_CONTACTS_AMOUNT; i++)
+		if (contacts[i].hasData)
+			contacts[i].PrintTableLine(i);
+}
+
+void	PhoneBook::PrintTableHeader()
+{
+	std::cout << "|";
+	Utils::PrintTableCell("Index");
+	std::cout << "|";
+	Utils::PrintTableCell("First Name");
+	std::cout << "|";
+	Utils::PrintTableCell("Last Name");
+	std::cout << "|";
+	Utils::PrintTableCell("Nickname");
+	std::cout << "|";
+	std::cout << "\n";
+
+	std::cout << "|";
+	Utils::PrintTableCell("----------");
+	std::cout << "|";
+	Utils::PrintTableCell("----------");
+	std::cout << "|";
+	Utils::PrintTableCell("----------");
+	std::cout << "|";
+	Utils::PrintTableCell("----------");
+	std::cout << "|";
+	std::cout << "\n";
+}

@@ -6,12 +6,14 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:37:35 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 15:50:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:28:11 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
+
+#include "Utils.hpp"
 
 #include <ctime>
 #include <string>
@@ -40,7 +42,6 @@ class Contact
 
 		void		GetInputLine(std::string prompt, std::string &dest);
 		bool		IsValidPhoneNumber(const std::string& phoneNumber);
-		void		PrintTableCell(std::string data);
 };
 
 #endif
