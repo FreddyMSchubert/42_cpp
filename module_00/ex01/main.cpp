@@ -6,16 +6,56 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:47:16 by freddy            #+#    #+#             */
-/*   Updated: 2024/08/19 14:53:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:53:35 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include "PhoneBook.cpp"
 
-int	main()
+void PrintAvailableCommands()
 {
-	Contact contact;
+	std::cout << "Available Commands:\n";
+	std::cout << " - ADD to add a contact\n";
+	std::cout << " - SEARCH to display a specific contact\n";
+	std::cout << " - EXIT to quit the program :(";
+	std::cout << std::endl;
+}
 
-	contact.InitContact();
-	contact.PrintTableLine(42);
+int	main(int argc, char **argv)
+{
+	(void)argv;
+	if (argc != 1)
+	{
+		std::cout << "Error: No arguments expected." << std::endl;
+		return -1;
+	}
+
+	PhoneBook phoneBook;
+
+	PrintAvailableCommands();
+
+	// Program Loop
+	while (true)
+	{
+		std::string input;
+		std::cout << "Enter command:\n> ";
+		std::getline(std::cin, input);
+		if (input.empty())
+			continue ;
+
+		if (input == "ADD")
+			phoneBook.Add();
+		// else if (input == "SEARCH")
+		// 	phonebook.search();
+		else if (input == "EXIT" || std::cin.eof())
+			break;
+		else
+		{
+			std::cout << "Error: " << "\"" << input << "\" is not a valid command!" << std::endl;
+			PrintAvailableCommands();
+		}
+	}
+
+	return 0;
 }

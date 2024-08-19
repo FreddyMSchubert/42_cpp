@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:28:02 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 14:55:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/19 16:00:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@ Contact::~Contact() {}
 
 void	Contact::InitContact()
 {
-	GetInputLine("first name", &firstName);
-	GetInputLine("last name", &lastName);
-	GetInputLine("nickname", &nickName);
+	hasData = false;
+	GetInputLine("first name", firstName);
+	GetInputLine("last name", lastName);
+	GetInputLine("nickname", nickName);
 	do
 	{
-		GetInputLine("phone number", &phoneNumber);
+		GetInputLine("phone number", phoneNumber);
 		if (!IsValidPhoneNumber(phoneNumber))
 			std::cout << "Invalid phone number. Please enter a valid phone number." << std::endl;
 	}
 	while (!IsValidPhoneNumber(phoneNumber));
-	GetInputLine("darkest secret", &secret);
+	GetInputLine("darkest secret", secret);
 	creationTimestamp = time(0);
 	hasData = true;
 
@@ -37,11 +38,11 @@ void	Contact::InitContact()
 	Contact::PrintContact();
 }
 
-void	Contact::GetInputLine(std::string prompt, std::string *dest)
+void	Contact::GetInputLine(std::string prompt, std::string &dest)
 {
 	std::string input;
 
-	std::cout << "Enter " << prompt << ": ";
+	std::cout << "Enter " << prompt << ":\n> ";
 	std::getline(std::cin, input);
 	while (input.empty())
 	{
@@ -49,7 +50,7 @@ void	Contact::GetInputLine(std::string prompt, std::string *dest)
 		std::cout << "Please enter a valid " << prompt << ": ";
 		std::getline(std::cin, input);
 	}
-	*dest = input;
+	dest = input;
 }
 
 bool	Contact::IsValidPhoneNumber(const std::string& phoneNumber)

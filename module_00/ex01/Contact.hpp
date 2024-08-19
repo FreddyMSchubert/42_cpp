@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:37:35 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 14:47:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:50:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class Contact
 		std::string	phoneNumber;
 		std::string	secret;
 
-		void		GetInputLine(std::string prompt, std::string *dest);
+		void		GetInputLine(std::string prompt, std::string &dest);
 		bool		IsValidPhoneNumber(const std::string& phoneNumber);
 		void		PrintTableCell(std::string data);
 };

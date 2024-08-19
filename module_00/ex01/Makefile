@@ -7,10 +7,10 @@ FLAGS := -Wall -Wextra -Werror -std=c++17
 all: linking
 
 linking: $(OBJ)
-	c++ $(FLAGS) $(OBJ) -o $(EXECUTABLE)
+	c++ $(FLAGS) $(OBJ) -o $(EXECUTABLE) -fsanitize=address -g
 
 %.o: %.cpp
-	c++ $(FLAGS) -c $< -o $@
+	c++ $(FLAGS) -c $< -o $@ -fsanitize=address -g
 
 clean:
 	rm -rf $(OBJ)
