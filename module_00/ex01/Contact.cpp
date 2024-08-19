@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:28:02 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 13:55:02 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/19 14:55:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,22 @@ void	Contact::PrintContact()
 
 // Table Formatting
 
-// ...
+void	Contact::PrintTableLine(int index)
+{
+	std::cout << "|";
+	PrintTableCell(std::to_string(index));
+	std::cout << "|";
+	PrintTableCell(firstName);
+	std::cout << "|";
+	PrintTableCell(lastName);
+	std::cout << "|";
+	PrintTableCell(nickName);
+	std::cout << "|";
+}
+
+void	Contact::PrintTableCell(std::string data)
+{
+	if (data.length() > 10)
+		std::cout << data.substr(0, 9) << ".";
+	std::cout << std::setw(10) << std::right << data;
+}
