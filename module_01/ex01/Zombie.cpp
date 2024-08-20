@@ -6,12 +6,16 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 14:40:37 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/20 17:11:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/20 17:07:03 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
+Zombie::Zombie()
+{
+	this->name = "Nameless, unloved piece of rotten meat";
+}
 Zombie::Zombie(std::string name)
 {
 	this->name = name;
@@ -24,4 +28,9 @@ Zombie::~Zombie()
 void	Zombie::announce()
 {
 	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void	Zombie::SetName(std::string name)
+{
+	this->name = name;
 }
