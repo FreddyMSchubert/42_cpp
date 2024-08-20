@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:13:39 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/20 13:24:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/20 15:32:44 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ class PhoneBook
 		PhoneBook();
 		~PhoneBook();
 
-		Contact	contacts[MAX_CONTACTS_AMOUNT];
-		int		contactsCount;
-
 		void	Add();
 		void	Search();
+
+	private:
+		Contact	contacts[MAX_CONTACTS_AMOUNT];
+		int		contactsCount;
 
 		int		GetOldestEntry();
 		void	PrintTable();
