@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:28:02 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 16:41:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:51:08 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	Contact::GetInputLine(std::string prompt, std::string &dest)
 	std::getline(std::cin, input);
 	while (input.empty())
 	{
-		if (std::cin.eof()) break;
+		if (std::cin.eof()) exit(0);
 		std::cout << "Please enter a valid " << prompt << ": ";
 		std::getline(std::cin, input);
 	}

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:13:09 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 17:03:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:54:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,12 @@ void	PhoneBook::Search()
 	while (true)
 	{
 		std::cout << "Please input the index of the contact you wish to learn more about:\n> ";
-		std::cin >> index;
 
-		if (std::cin.fail())
+		if (!(std::cin >> index))
 		{
+			if (std::cin.eof())
+				exit(0);
+
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Invalid input. Please enter a numeric index." << std::endl;

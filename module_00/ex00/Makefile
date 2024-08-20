@@ -1,6 +1,6 @@
 EXECUTABLE := "megaphone"
 
-SRC := megaphone.cpp
+SRC := Megaphone.cpp
 OBJ := $(SRC:.cpp=.o)
 FLAGS := -Wall -Wextra -Werror -std=c++17
 

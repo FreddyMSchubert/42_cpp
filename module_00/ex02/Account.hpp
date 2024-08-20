@@ -18,22 +18,20 @@
 
 class Account {
 
+
 public:
 
 	typedef Account		t;
 
-	// these are all just getters
 	static int	getNbAccounts( void );
 	static int	getTotalAmount( void );
 	static int	getNbDeposits( void );
 	static int	getNbWithdrawals( void );
-
-	static void	displayAccountsInfos( void );	// general, non account-specific info display
+	static void	displayAccountsInfos( void );
 
 	Account( int initial_deposit );
 	~Account( void );
 
-	// various account operations, refer to tests.cpp for intended output
 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );
 	int		checkAmount( void ) const;
@@ -42,17 +40,17 @@ public:
 
 private:
 
-	static int	_nbAccounts;				// shared accounts count
-	static int	_totalAmount;				// shared account balances
-	static int	_totalNbDeposits;			// shared total deposits
-	static int	_totalNbWithdrawals;		// shared total successful (!) withdrawals
+	static int	_nbAccounts;
+	static int	_totalAmount;
+	static int	_totalNbDeposits;
+	static int	_totalNbWithdrawals;
 
-	static void	_displayTimestamp( void );	// displays the [...] thing
+	static void	_displayTimestamp( void );
 
-	int				_accountIndex;			// #
-	int				_amount;				// actual account balance
-	int				_nbDeposits;			// deposit count
-	int				_nbWithdrawals;			// successful (!) withdrawal count
+	int				_accountIndex;
+	int				_amount;
+	int				_nbDeposits;
+	int				_nbWithdrawals;
 
 	Account( void );
 

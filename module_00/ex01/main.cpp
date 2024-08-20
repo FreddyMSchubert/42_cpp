@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:47:16 by freddy            #+#    #+#             */
-/*   Updated: 2024/08/19 16:40:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:50:06 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	main(int argc, char **argv)
 	{
 		std::string input;
 		std::cout << "Enter command:\n> ";
-		std::getline(std::cin, input);
+
+		if (!std::getline(std::cin, input))
+			break;
 		if (input.empty())
 			continue ;
 

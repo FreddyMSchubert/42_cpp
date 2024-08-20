@@ -15,7 +15,7 @@
 
 int		main( void ) {
 
-	typedef std::vector<Account::t>							  accounts_t; // lines 1 - 8
+	typedef std::vector<Account::t>							  accounts_t;
 	typedef std::vector<int>								  ints_t;
 	typedef std::pair<accounts_t::iterator, ints_t::iterator> acc_int_t;
 
@@ -37,30 +37,29 @@ int		main( void ) {
 	ints_t::iterator	wit_begin	= withdrawals.begin();
 	ints_t::iterator	wit_end		= withdrawals.end();
 
-	Account::displayAccountsInfos(); // line 9
-	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) ); // lines 10 - 17
+	Account::displayAccountsInfos();
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, dep_begin );
 		  it.first != acc_end && it.second != dep_end;
 		  ++(it.first), ++(it.second) ) {
 
-		(*(it.first)).makeDeposit( *(it.second) ); // lines 18 - 25
+		(*(it.first)).makeDeposit( *(it.second) );
 	}
 
-	Account::displayAccountsInfos(); // line 26
-	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) ); // lines 27 - 34
+	Account::displayAccountsInfos();
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
 	for ( acc_int_t it( acc_begin, wit_begin );
 		  it.first != acc_end && it.second != wit_end;
 		  ++(it.first), ++(it.second) ) {
 
-		(*(it.first)).makeWithdrawal( *(it.second) ); // lines 35 - 42
+		(*(it.first)).makeWithdrawal( *(it.second) );
 	}
 
-	Account::displayAccountsInfos(); // line 43
-	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) ); // lines 44 - 51
+	Account::displayAccountsInfos();
+	std::for_each( acc_begin, acc_end, std::mem_fun_ref( &Account::displayStatus ) );
 
-	// lines 52 - 59
 	return 0;
 }
 
