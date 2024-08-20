@@ -16,5 +16,6 @@ void	Utils::PrintTableCell(std::string data)
 {
 	if (data.length() > 10)
 		std::cout << data.substr(0, 9) << ".";
-	std::cout << std::setw(10) << std::right << data;
+	else
+		std::cout << std::setw(10) << std::right << data;
 }
