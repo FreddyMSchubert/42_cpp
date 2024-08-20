@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:27:48 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/20 11:32:23 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/20 11:47:01 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,39 @@ Account::Account(int initial_deposit)
 				<< ";amount:" << _amount
 				<< ";created" << std::endl;
 }
-Account::~Account() {}
+
+Account::~Account()
+{
+	// Goodbye message
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex
+				<< ";amount:" << _amount
+				<< ";closed" << std::endl;
+	_nbAccounts--;
+}
 
 /* ----- GETTERS & SETTERS ----- */
 
-int	Account::getNbAccounts(void)
+int	Account::getNbAccounts()
 { return (_nbAccounts); }
-int	Account::getTotalAmount(void)
+int	Account::getTotalAmount()
 { return (_totalAmount); }
-int	Account::getNbDeposits(void)
+int	Account::getNbDeposits()
 { return (_totalNbDeposits); } 
-int	Account::getNbWithdrawals(void)
+int	Account::getNbWithdrawals()
 { return (_totalNbWithdrawals); }
+
+/* ----- GENERAL FUNCTIONS ----- */
+
+void	Account::displayAccountsInfos()
+{
+	_displayTimestamp();
+	std::cout << "accounts:" << _nbAccounts
+				<< ";total:" << _totalAmount
+				<< ";deposits:" << _totalNbDeposits
+				<< ";withdrawals:" << _totalNbWithdrawals
+				<< std::endl;
+}
 
 /* ----- ACCOUNT ACTIONS ----- */
 
@@ -81,7 +102,24 @@ bool	Account::makeWithdrawal( int withdrawal )
 	_totalNbWithdrawals++;
 
 	std::cout << ";amount:" << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
-	return (true);
+	return true;
+}
+
+// Data Retrievers
+
+int	Account::checkAmount() const
+{
+	return _amount;
+}
+
+void	Account::displayStatus() const
+{
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex
+				<< ";amount:" << _amount
+				<< ";deposits:" << _nbDeposits
+				<< ";withdrawals:" << _nbWithdrawals
+				<< std::endl;
 }
 
 /* ----- UTILS ----- */
