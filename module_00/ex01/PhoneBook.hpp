@@ -6,17 +6,20 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:13:39 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/19 17:04:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/20 13:24:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#pragma once
 
 #define MAX_CONTACTS_AMOUNT 8
 
 #include "Contact.hpp"
 #include "Utils.hpp"
+
+#include <string>
+#include <iostream>
+#include <iomanip>
 
 class PhoneBook
 {
@@ -34,5 +37,3 @@ class PhoneBook
 		void	PrintTable();
 		void	PrintTableHeader();
 };
-
-#endif
