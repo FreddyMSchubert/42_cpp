@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 14:40:48 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/20 14:56:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:45:08 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,6 @@ class Zombie
 	private:
 		std::string name;
 };
+
+Zombie*	newZombie( std::string name );
+void	randomChump( std::string name );
