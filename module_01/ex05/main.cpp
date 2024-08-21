@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 15:53:25 by freddy            #+#    #+#             */
-/*   Updated: 2024/08/21 16:18:03 by freddy           ###   ########.fr       */
+/*   Created: 2024/08/21 16:21:57 by freddy            #+#    #+#             */
+/*   Updated: 2024/08/21 16:23:18 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Harl.hpp"
 
-#include <iostream>
-
-class Harl
+int	main()
 {
-	public:
-		void	complain( std::string level );
-
-	private:
-		void	debug( void );
-		void	info( void );
-		void	warning( void );
-		void	error( void );
-};
+	for (int i = 0; i < 500; i++)
+	{
+		if (i % 5 == 0)
+			Harl().complain("DEBUG");
+		if (i % 7 == 0)
+			Harl().complain("INFO");
+		if (i % 11 == 0)
+			Harl().complain("WARNING");
+		if (i % 13 == 0)
+			Harl().complain("ERROR");
+	}
+}
