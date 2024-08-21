@@ -1,2 +1,0 @@
-Welcome to file handling in CPP! It's exactly like in C, I think I'll manage.
-A wild baobab tree appears! It has no attacks, relax.
