@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:44:36 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/21 15:45:24 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/21 15:47:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 
 	// READING
 
-	std::ifstream inFile("example_input.txt");
+	std::ifstream inFile(filename);
 	if (!inFile.is_open())
 	{
 		std::cerr << "Error opening file \"" << filename << "\".";
