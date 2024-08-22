@@ -6,12 +6,13 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:44:36 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/21 10:57:04 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/22 08:52:26 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
 int	main(int argc, char **argv)
 {
@@ -27,27 +28,54 @@ int	main(int argc, char **argv)
 
 	// READING
 
-	std::ifstream inFile("example_input.txt");
+	std::ifstream inFile(filename);
 	if (!inFile.is_open())
 	{
 		std::cerr << "Error opening file \"" << filename << "\".";
 		exit(-2);
 	}
-	std::string currLine;
-	while (getline(inFile, currLine))
-		std::cout << currLine << std::endl;
+	std::ostringstream buffer;
+	std::string inFileString;
+	while (getline(inFile, inFileString))
+		buffer << inFileString << std::endl;
 	inFile.close();
+	inFileString = buffer.str();
+
+	// REPLACING
+
+	std::string tempString;
+	std::ostringstream outFileStringStream;
+	if (filterString.empty())
+	{
+		outFileStringStream << inFileString;
+	}
+	else
+	{
+		for (size_t i = 0; i < inFileString.length(); i++)
+		{
+			tempString = inFileString.substr(i, filterString.length());
+			if (tempString == filterString)
+			{
+				outFileStringStream << replaceString;
+				i += filterString.length() - 1;
+			}
+			else
+			{
+				outFileStringStream << inFileString[i];
+			}
+		}
+	}
+	std::string outFileString = outFileStringStream.str();
 
 	// WRITING
 
-	std::ofstream outFile("example_output.txt");
+	std::ofstream outFile(filename + ".replace");
 	if (!outFile.is_open())
 	{
-		std::cerr << "Error opening file \"" << filename << "\".";
+		std::cerr << "Error opening file \"" << filename << ".replace\".";
 		exit(-3);
 	}
-	outFile << "Welcome to file handling in CPP! It's exactly like in C, I think I'll manage." << std::endl;
-	outFile << "A wild baobab tree appears! It has no attacks, relax." << std::endl;
+	outFile << outFileString;
 	outFile.close();
 
 	return 0;
