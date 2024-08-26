@@ -1,4 +1,4 @@
-EXECUTABLE := "super_duper_useful"
+EXECUTABLE := super_duper_useful
 
 SRC := $(shell find . -name "*.cpp")
 OBJ := $(SRC:.cpp=.o)

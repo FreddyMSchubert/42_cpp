@@ -1,4 +1,4 @@
-EXECUTABLE := "zombieHorde"
+EXECUTABLE := zombieHorde
 
 SRC := Zombie.cpp zombieHorde.cpp main.cpp
 OBJ := $(SRC:.cpp=.o)

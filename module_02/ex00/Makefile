@@ -1,4 +1,4 @@
-EXECUTABLE := "its_canon"
+EXECUTABLE := its_canon
 
 SRC := $(shell find . -name "*.cpp")
 OBJ := $(SRC:.cpp=.o)

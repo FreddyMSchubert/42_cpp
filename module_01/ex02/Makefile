@@ -1,4 +1,4 @@
-EXECUTABLE := "hi_this_is_brain"
+EXECUTABLE := hi_this_is_brain
 
 SRC := main.cpp
 OBJ := $(SRC:.cpp=.o)

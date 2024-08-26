@@ -1,4 +1,4 @@
-EXECUTABLE := "sed_sucks"
+EXECUTABLE := sed_sucks
 
 SRC := main.cpp
 OBJ := $(SRC:.cpp=.o)

@@ -1,4 +1,4 @@
-EXECUTABLE := "unnecessary_violence"
+EXECUTABLE := unnecessary_violence
 
 SRC := main.cpp Human.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 OBJ := $(SRC:.cpp=.o)

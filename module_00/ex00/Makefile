@@ -1,4 +1,4 @@
-EXECUTABLE := "megaphone"
+EXECUTABLE := megaphone
 
 SRC := Megaphone.cpp
 OBJ := $(SRC:.cpp=.o)

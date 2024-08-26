@@ -1,4 +1,4 @@
-EXECUTABLE := "zombie"
+EXECUTABLE := zombie
 
 SRC := newZombie.cpp randomChump.cpp Zombie.cpp main.cpp
 OBJ := $(SRC:.cpp=.o)

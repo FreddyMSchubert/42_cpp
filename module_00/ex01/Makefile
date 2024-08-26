@@ -1,4 +1,4 @@
-EXECUTABLE := "phonebook"
+EXECUTABLE := phonebook
 
 SRC := Contact.cpp PhoneBook.cpp Utils.cpp main.cpp
 OBJ := $(SRC:.cpp=.o)

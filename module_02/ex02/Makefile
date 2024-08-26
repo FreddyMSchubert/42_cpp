@@ -1,4 +1,4 @@
-EXECUTABLE := "now_were_talking"
+EXECUTABLE := now_were_talking
 
 SRC := $(shell find . -name "*.cpp")
 OBJ := $(SRC:.cpp=.o)

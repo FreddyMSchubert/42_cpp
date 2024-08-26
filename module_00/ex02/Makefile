@@ -1,4 +1,4 @@
-EXECUTABLE := "bank_manager"
+EXECUTABLE := bank_manager
 
 SRC := Account.cpp tests.cpp
 OBJ := $(SRC:.cpp=.o)

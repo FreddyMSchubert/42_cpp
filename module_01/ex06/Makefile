@@ -1,4 +1,4 @@
-EXECUTABLE := "harlFilter"
+EXECUTABLE := harlFilter
 
 SRC := main.cpp
 OBJ := $(SRC:.cpp=.o)
