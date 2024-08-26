@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 09:23:49 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/26 13:26:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:36:22 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ int	main()
 	std::cout << "Minus: " << (a - b) << std::endl;
 	std::cout << "Times: " << (a * b) << std::endl;
 	std::cout << "Division: " << (a / b) << std::endl;
+
+	std::cout << "That was fun! Now, let's dicide by 0 and see whether we encounter the singularity." << std::endl;
+	std::cout << "42 / 0 = " << (Fixed(42) / Fixed(0)) << std::endl;
+	std::cout << (3.0f / 0.0f) << std::endl;
+	std::cout << Fixed(3.0f / 0.0f) << std::endl;
 
 	return 0;
 }

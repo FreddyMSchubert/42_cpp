@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 09:23:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/26 13:25:02 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:40:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,26 @@ Fixed::~Fixed() {};
 
 // value constructors
 Fixed::Fixed(const int val)
-{ this->val = val << fract_bits; };
+{
+	this->val = val << fract_bits;
+};
 Fixed::Fixed(const float val)
-{ this->val = static_cast<int>(round(val * (1 << fract_bits))); };
+{
+	if (std::isinf(val))
+	{
+		std::cerr << "Error: Attempt to initialize Fixed with infinity." << std::endl;
+		this->val = 0;
+	}
+	else if (std::isnan(val))
+	{
+		std::cerr << "Error: Attempt to initialize Fixed with NaN." << std::endl;
+		this->val = 0;
+	}
+	else
+	{
+		this->val = static_cast<int>(round(val * (1 << fract_bits)));
+	}
+};
 
 /* ----- GETTERS & SETTERS ----- */
 
@@ -71,7 +88,14 @@ Fixed Fixed::operator-(const Fixed& other) const
 Fixed Fixed::operator*(const Fixed& other) const
 { return Fixed(this->toFloat() * other.toFloat()); }
 Fixed Fixed::operator/(const Fixed& other) const
-{ return Fixed(this->toFloat() / other.toFloat()); }
+{
+	if (other == Fixed(0))
+	{
+		std::cerr << "Error: Attempted division by 0" << std::endl;
+		return Fixed(0);
+	}
+	return Fixed(this->toFloat() / other.toFloat());
+}
 
 // Increment/Decrement operators
 // Post increment operators take an int as an arg. Why? Ask Bjarne i guess.

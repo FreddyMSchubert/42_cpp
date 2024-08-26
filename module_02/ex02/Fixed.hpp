@@ -6,13 +6,14 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 09:23:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/26 13:09:04 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:38:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "iostream"
+#include "cmath"
 
 class Fixed
 {
