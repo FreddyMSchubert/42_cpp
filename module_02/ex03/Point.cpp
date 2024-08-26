@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 13:56:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/26 17:01:32 by freddy           ###   ########.fr       */
+/*   Created: 2024/08/26 16:48:22 by freddy            #+#    #+#             */
+/*   Updated: 2024/08/26 17:04:04 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Point.hpp"
 
-#include "Fixed.hpp"
-
-class Point
+Point::Point() : x(0), y(0) {};
+Point::Point(float x, float y) : x(x), y(y) {};
+Point::Point(Point& other) : x(other.getX()), y(other.getY()) {};
+Point::~Point() {};
+Point& Point::operator=(const Point &other)
 {
-	public:
-		Point();
-		Point(float x, float y);
-		Point(Point& other);
-		~Point();
-		Point& operator=(const Point &other);
-
-		Fixed getX() const;
-		Fixed getY() const;
-
-	private:
-		Fixed const x;
-		Fixed const y;
+	// Data is not updateable, so = shouldn't do anything
+	(void) other;
+	return *this;
 };
+
+Fixed Point::getX() const
+{ return x; }
+Fixed Point::getY() const
+{ return y; }
