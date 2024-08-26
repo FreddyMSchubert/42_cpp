@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 09:23:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/26 11:54:18 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:46:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Fixed::Fixed(const int val)
 Fixed::Fixed(const float val)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->val = static_cast<int>(round(val * (1 << fract_bits)));
+	this->val = static_cast<int>(roundf(val * (1 << fract_bits)));
 };
 
 // ⬆️ regarding that

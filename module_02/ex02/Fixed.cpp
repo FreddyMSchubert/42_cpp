@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 09:23:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/26 13:40:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:46:39 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,7 @@ Fixed::Fixed(const int val)
 };
 Fixed::Fixed(const float val)
 {
-	if (std::isinf(val))
-	{
-		std::cerr << "Error: Attempt to initialize Fixed with infinity." << std::endl;
-		this->val = 0;
-	}
-	else if (std::isnan(val))
-	{
-		std::cerr << "Error: Attempt to initialize Fixed with NaN." << std::endl;
-		this->val = 0;
-	}
-	else
-	{
-		this->val = static_cast<int>(round(val * (1 << fract_bits)));
-	}
+	this->val = static_cast<int>(roundf(val * (1 << fract_bits)));
 };
 
 /* ----- GETTERS & SETTERS ----- */
