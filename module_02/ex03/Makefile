@@ -1,4 +1,4 @@
-EXECUTABLE := "buy_gold_bye"			// Reality is an illusion, the universe is a hologram, buy gold bye
+EXECUTABLE := "buy_gold_bye"
 
 SRC := $(shell find . -name "*.cpp")
 OBJ := $(SRC:.cpp=.o)

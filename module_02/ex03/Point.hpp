@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 13:56:15 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/26 17:01:32 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/26 17:20:04 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Point
 	public:
 		Point();
 		Point(float x, float y);
-		Point(Point& other);
+		Point(const Point& other);
 		~Point();
 		Point& operator=(const Point &other);
 
