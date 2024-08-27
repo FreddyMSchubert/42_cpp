@@ -6,27 +6,38 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:28:33 by freddy            #+#    #+#             */
-/*   Updated: 2024/08/27 15:31:34 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/27 15:53:33 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name + "_scav_name"), FragTrap(name + "_frag_name"), name(name)
 {
-	hitPoints = 100;
-	energyPoints = 100;
-	attackDamage = 30;
-	std::cout << name << " woke up just now fraggin'." << std::endl;
+	hitPoints = FragTrap::hitPoints;
+	energyPoints = ScavTrap::energyPoints;
+	attackDamage = FragTrap::attackDamage;
+
+	std::cout << name << " woke up just now diamondin'." << std::endl;
 };
-DiamondTrap::DiamondTrap(DiamondTrap& other) : ClapTrap(other.name), ScavTrap(other.name), FragTrap(other.name)
+DiamondTrap::DiamondTrap(DiamondTrap& other) : ClapTrap(other.name + "_clap_name"), ScavTrap(other.name + "_scav_name"), FragTrap(other.name + "_frag_name"), name(other.name)
 {
-	hitPoints = other.hitPoints;
-	energyPoints = other.energyPoints;
-	attackDamage = other.attackDamage;
-	std::cout << name << " woke up just now fraggin'." << std::endl;
+	hitPoints = FragTrap::hitPoints;
+	energyPoints = ScavTrap::energyPoints;
+	attackDamage = FragTrap::attackDamage;
+
+	std::cout << name << " woke up just now diamondin'." << std::endl;
 };
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << name << " drifted out of reality fraggin'." << std::endl;
+	std::cout << name << " drifted out of reality diamondin'." << std::endl;
 };
+
+void DiamondTrap::attack(const std::string& target)
+{
+	ScavTrap::attack(target);
+}
+void DiamondTrap::whoAmI()
+{
+	std::cout << "I am " << name << " and my ClapTrap name is " << ClapTrap::name << std::endl;
+}

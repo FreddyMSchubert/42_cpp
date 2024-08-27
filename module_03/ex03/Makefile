@@ -2,7 +2,7 @@ EXECUTABLE := clappinAndScavvinAndFragginAndDiamondinAndTrappin
 
 SRC := $(shell find . -name "*.cpp")
 OBJ := $(SRC:.cpp=.o)
-FLAGS := -Wall -Wextra -Werror -std=c++17
+FLAGS := -Wall -Wextra -Werror -Wshadow -std=c++17
 
 all: $(EXECUTABLE)
 

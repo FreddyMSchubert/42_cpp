@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:43:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 12:21:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:55:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main()
 {
-	FragTrap gorgoblov;
-	FragTrap shymaldur("shymaldur");
+	DiamondTrap gorgoblov("gorgoblov");
+	DiamondTrap shymaldur("shymaldur");
 
 	shymaldur.highFivesGuys();
+	gorgoblov.guardGate();
+	shymaldur.whoAmI();
+	gorgoblov.whoAmI();
 	gorgoblov.attack("42 paris, an inferior campus to 42 Heilbronn, ");
 	shymaldur.attack("gorgoblov");
 	gorgoblov.takeDamage(4);
