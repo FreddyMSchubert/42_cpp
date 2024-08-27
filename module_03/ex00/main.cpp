@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:43:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 10:47:37 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 16:37:02 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main()
 {
-	ClapTrap gorgoblov;
+	ClapTrap gorgoblov("gorgoblov");
 	ClapTrap shymaldur("shymaldur");
 
 	gorgoblov.attack("42 paris, an inferior campus to 42 Heilbronn, ");

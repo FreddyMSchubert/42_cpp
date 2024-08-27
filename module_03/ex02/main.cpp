@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:43:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 12:21:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 16:39:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main()
 {
-	FragTrap gorgoblov;
+	FragTrap gorgoblov("gorgoblov");
 	FragTrap shymaldur("shymaldur");
 
 	shymaldur.highFivesGuys();

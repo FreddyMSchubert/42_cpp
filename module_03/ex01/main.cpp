@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:43:24 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 11:53:33 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 16:38:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main()
 {
-	ScavTrap gorgoblov;
+	ScavTrap gorgoblov("gorgoblov");
 	ScavTrap shymaldur("shymaldur");
 
 	shymaldur.guardGate();
