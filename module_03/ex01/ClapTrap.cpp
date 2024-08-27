@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 09:38:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 10:48:48 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 12:25:09 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 
 void	ClapTrap::attack(const std::string& target)
 {
+	if (hitPoints <= 0)
+		return ;
 	if (energyPoints > 1)
 	{
 		energyPoints--;
@@ -54,6 +56,8 @@ void	ClapTrap::attack(const std::string& target)
 }
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	if (hitPoints <= 0)
+		return ;
 	hitPoints -= amount;
 	if (hitPoints < 0)
 		hitPoints = 0;
@@ -63,6 +67,8 @@ void	ClapTrap::takeDamage(unsigned int amount)
 }
 void	ClapTrap::beRepaired(unsigned int amount)
 {
+	if (hitPoints <= 0)
+		return ;
 	if (energyPoints > 1)
 	{
 		hitPoints += amount;

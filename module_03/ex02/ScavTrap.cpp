@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 11:05:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 12:25:18 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 12:24:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,5 @@ void ScavTrap::attack(const std::string& target)
 }
 void ScavTrap::guardGate()
 {
-	if (hitPoints <= 0)
-		return ;
 	std::cout << name << " has entered gate keeper mode" << std::endl;
 }
