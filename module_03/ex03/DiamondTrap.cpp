@@ -1,53 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 12:18:23 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 15:32:10 by freddy           ###   ########.fr       */
+/*   Created: 2024/08/27 15:28:33 by freddy            #+#    #+#             */
+/*   Updated: 2024/08/27 15:31:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
 {
 	hitPoints = 100;
 	energyPoints = 100;
 	attackDamage = 30;
 	std::cout << name << " woke up just now fraggin'." << std::endl;
 };
-FragTrap::FragTrap(FragTrap& other) : ClapTrap(other.name)
+DiamondTrap::DiamondTrap(DiamondTrap& other) : ClapTrap(other.name), ScavTrap(other.name), FragTrap(other.name)
 {
 	hitPoints = other.hitPoints;
 	energyPoints = other.energyPoints;
 	attackDamage = other.attackDamage;
 	std::cout << name << " woke up just now fraggin'." << std::endl;
 };
-FragTrap::~FragTrap()
+DiamondTrap::~DiamondTrap()
 {
 	std::cout << name << " drifted out of reality fraggin'." << std::endl;
 };
-
-void FragTrap::attack(const std::string& target)
-{
-	if (hitPoints <= 0)
-		return ;
-	if (energyPoints > 1)
-	{
-		energyPoints--;
-		std::cout << name << " attacks " << target << " with " << attackDamage << " strength & while fraggin'" << std::endl;
-	}
-	else
-	{
-		std::cout << name << " is too weak to attack " << target << " even while fraggin'" << std::endl;
-	}
-}
-void FragTrap::highFivesGuys()
-{
-	if (hitPoints <= 0)
-		return ;
-	std::cout << name << " brings all the boys to the yard - and gives them a high five with schmagges!" << std::endl;
-}

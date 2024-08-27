@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 12:16:58 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 15:32:16 by freddy           ###   ########.fr       */
+/*   Created: 2024/08/27 09:36:04 by fschuber          #+#    #+#             */
+/*   Updated: 2024/08/27 15:31:45 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ClapTrap.hpp"
 #include <iostream>
 
-class FragTrap : public ClapTrap
+class ClapTrap
 {
 	public:
-		FragTrap(std::string name);
-		FragTrap(FragTrap& other);
-		~FragTrap() override;
+		ClapTrap(std::string name);
+		ClapTrap(ClapTrap& other);
+		ClapTrap& operator=(const ClapTrap &other);
+		virtual ~ClapTrap();
 
-		void attack(const std::string& target) override;
-		void highFivesGuys();
+		virtual void	attack(const std::string& target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
+
+	protected:
+		std::string	name;
+		int			hitPoints;
+		int			energyPoints;
+		int			attackDamage;
 };

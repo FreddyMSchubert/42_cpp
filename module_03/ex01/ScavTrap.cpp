@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 11:05:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 12:25:18 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:32:32 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ScavTrap("ScavTrap") {};
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	hitPoints = 100;

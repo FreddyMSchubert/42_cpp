@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 09:36:04 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 11:10:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:32:06 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 class ClapTrap
 {
 	public:
-		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap& other);
 		ClapTrap& operator=(const ClapTrap &other);

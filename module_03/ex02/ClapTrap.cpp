@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 09:38:51 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 12:24:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:32:03 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 /* ----- CONSTRUCTS ETC. ----- */
 
-ClapTrap::ClapTrap() : ClapTrap("ClapTrap") {};
 ClapTrap::ClapTrap(std::string name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	std::cout << name << " woke up just now." << std::endl;

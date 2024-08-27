@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:57:54 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 11:52:05 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:32:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 class ScavTrap : public ClapTrap
 {
 	public:
-		ScavTrap();
 		ScavTrap(std::string name);
 		ScavTrap(ScavTrap& other);
 		~ScavTrap() override;

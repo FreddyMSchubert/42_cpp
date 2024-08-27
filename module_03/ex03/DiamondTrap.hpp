@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 12:16:58 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/27 15:32:16 by freddy           ###   ########.fr       */
+/*   Created: 2024/08/27 15:22:22 by freddy            #+#    #+#             */
+/*   Updated: 2024/08/27 15:31:38 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
-class FragTrap : public ClapTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 	public:
-		FragTrap(std::string name);
-		FragTrap(FragTrap& other);
-		~FragTrap() override;
+		DiamondTrap(std::string name);
+		DiamondTrap(DiamondTrap& other);
+		~DiamondTrap() override;
 
 		void attack(const std::string& target) override;
-		void highFivesGuys();
+		void whoAmI();
 };
