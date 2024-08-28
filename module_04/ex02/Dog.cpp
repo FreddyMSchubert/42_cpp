@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:44:26 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 17:55:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/28 17:58:26 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ Dog& Dog::operator=(const Dog& other)
 	return *this;
 }
 
+std::string	Dog::getType() const
+{
+	return type;
+}
 void	Dog::makeSound() const
 {
 	std::cout << "BARK!" << std::endl;

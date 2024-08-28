@@ -1,46 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:44:26 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 17:55:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/28 17:58:22 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog()
+Cat::Cat()
 {
-	type = "Dog";
+	type = "Cat";
 	brain = new Brain();
-	std::cout << "New Dog" << std::endl;
+	std::cout << "New Cat" << std::endl;
 };
-Dog::Dog(const Dog& other)
+Cat::Cat(const Cat& other)
 {
-	type = "Dog";
+	type = "Cat";
 	brain = new Brain(*other.brain);
-	std::cout << "Dog copied" << std::endl;
+	std::cout << "Cat copied" << std::endl;
 };
-Dog::~Dog()
+Cat::~Cat()
 {
-	std::cout << "Dog died" << std::endl;
+	std::cout << "Cat died" << std::endl;
 	delete brain;
 };
-Dog& Dog::operator=(const Dog& other)
+Cat& Cat::operator=(const Cat& other)
 {
 	if (this == &other)
 		return *this;
-	std::cout << "Reassigned Dog" << std::endl;
+	std::cout << "Reassigned Cat" << std::endl;
 	if (this->brain)
 		delete this->brain;
-	this->brain = new Brain();
+	this->brain = new Brain(*other.brain);
 	return *this;
 }
 
-void	Dog::makeSound() const
+std::string	Cat::getType() const
 {
-	std::cout << "BARK!" << std::endl;
+	return type;
+}
+void	Cat::makeSound() const
+{
+	std::cout << "MEOW!" << std::endl;
+}
+std::string	Cat::compareBrain(Cat& other) const
+{
+	if (&brain->ideas[42] == &other.brain->ideas[42])
+		return "The same brain";
+	else
+		return "Different brains";
 }

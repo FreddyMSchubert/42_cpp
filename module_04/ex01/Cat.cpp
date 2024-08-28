@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:44:26 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 17:39:10 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/28 17:54:55 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Cat::Cat()
 };
 Cat::Cat(const Cat& other)
 {
+	type = "Cat";
 	brain = new Brain(*other.brain);
 	std::cout << "Cat copied" << std::endl;
 };

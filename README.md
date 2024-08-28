@@ -1,6 +1,6 @@
 # CPP Modules
 
-These are not a single project, but a bunch of smaller exercises.
+These are not a single project, but a bunch of smaller exercises, split into two halves.
 
 Each module has to be handed in seperately.
 
@@ -11,6 +11,7 @@ Each module has to be handed in seperately.
 | 2 | ✅ | ✅ | ✅ | 100/100 ✨ | 27.08.2024 |
 | 3 | ✅ | ✅ | ✅ | 100/100 ✨ | 27.08.2024 |
 | 4 | ✅ | 🔁 | 🔁 | 🔁 | 🔁 |
+| - | - | - | - | - | - |
 | 5 | 🔁 | 🔁 | 🔁 | 🔁 | 🔁 |
 | 6 | 🔁 | 🔁 | 🔁 | 🔁 | 🔁 |
 | 7 | 🔁 | 🔁 | 🔁 | 🔁 | 🔁 |

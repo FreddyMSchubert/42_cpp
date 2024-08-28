@@ -1,0 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/28 10:49:50 by fschuber          #+#    #+#             */
+/*   Updated: 2024/08/28 17:57:51 by freddy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "AAnimal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
+int	main()
+{
+	AAnimal *zoo[42];
+
+	for (int i = 0; i < 42; i ++)
+	{
+		if (i % 2 == 0)
+			zoo[i] = new Cat();
+		else
+			zoo[i] = new Dog();
+	}
+
+	for (int i = 0; i < 42; i ++)
+		delete zoo[i];
+
+	Cat *cat = new Cat();
+	Cat *cat2 = new Cat(*cat);
+	std::cout << cat->compareBrain(*cat2) << std::endl;
+	delete cat;
+	delete cat2;
+
+	// new AAnimal(); // that doesnt work
+}
