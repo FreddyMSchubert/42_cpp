@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:44:26 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 11:19:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:19:10 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat()
+WrongCat::WrongCat()
 {
-	type = "Cat";
+	type = "WrongCat";
 	std::cout << "New " << type << std::endl;
 };
-Cat::~Cat() { std::cout << type << " died" << std::endl; };
+WrongCat::~WrongCat() { std::cout << type << " died" << std::endl; };
 
-void	Cat::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "MEOW!" << std::endl;
+	std::cout << "WEOM¡" << std::endl;
 }

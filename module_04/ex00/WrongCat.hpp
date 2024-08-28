@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 10:44:26 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 11:19:00 by fschuber         ###   ########.fr       */
+/*   Created: 2024/08/28 10:41:49 by fschuber          #+#    #+#             */
+/*   Updated: 2024/08/28 11:11:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#pragma once
 
-Cat::Cat()
+#include "WrongAnimal.hpp"
+#include <iostream>
+
+class WrongCat : public WrongAnimal
 {
-	type = "Cat";
-	std::cout << "New " << type << std::endl;
+	public:
+		WrongCat();
+		~WrongCat();
+
+		void	makeSound() const;
 };
-Cat::~Cat() { std::cout << type << " died" << std::endl; };
-
-void	Cat::makeSound() const
-{
-	std::cout << "MEOW!" << std::endl;
-}
