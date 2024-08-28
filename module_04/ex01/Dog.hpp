@@ -6,13 +6,14 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:41:49 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 16:35:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/08/28 17:03:56 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include <iostream>
 
 class Dog : public Animal
@@ -24,4 +25,7 @@ class Dog : public Animal
 		Dog& operator=(const Dog& dog);
 
 		void	makeSound() const;
+
+	private:
+		Brain *brain;
 };

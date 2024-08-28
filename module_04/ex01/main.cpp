@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:49:50 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 11:50:00 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 17:19:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,10 @@ int	main()
 
 	for (int i = 0; i < 42; i ++)
 		delete zoo[i];
+
+	Cat *cat = new Cat();
+	Cat *cat2 = new Cat(*cat);
+	std::cout << cat->compareBrain(*cat2) << std::endl;
+	delete cat;
+	delete cat2;
 }
