@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:44:26 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 11:19:10 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:56:34 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 WrongCat::WrongCat()
 {
 	type = "WrongCat";
-	std::cout << "New " << type << std::endl;
+	std::cout << "New WrongCat" << std::endl;
 };
-WrongCat::~WrongCat() { std::cout << type << " died" << std::endl; };
+WrongCat::WrongCat(const WrongCat&) : WrongCat() {};
+WrongCat::~WrongCat() { std::cout << "WrongCat died" << std::endl; };
+WrongCat& WrongCat::operator=(const WrongCat&)
+{
+	std::cout << "Reassigned WrongCat" << std::endl;
+	return *this;
+}
 
 void	WrongCat::makeSound() const
 {

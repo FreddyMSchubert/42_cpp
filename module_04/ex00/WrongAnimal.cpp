@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:32:04 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 11:19:06 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:56:10 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal() : type("Generic WrongAnimal")
-{ std::cout << "New " << type << std::endl; }
+{ std::cout << "New WrongAnimal" << std::endl; }
 WrongAnimal::WrongAnimal(const WrongAnimal &other) : type(other.type) {}
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal &other)
 {
@@ -21,7 +21,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal &other)
 		this->type = other.type;
 	return *this;
 }
-WrongAnimal::~WrongAnimal() { std::cout << type << " died" << std::endl; };
+WrongAnimal::~WrongAnimal() { std::cout << "WrongAnimal died" << std::endl; };
 
 void	WrongAnimal::makeSound() const
 {
