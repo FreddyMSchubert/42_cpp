@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:39:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 18:46:29 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:14:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class AMateria
 		std::string _type;
 
 	public:
+		AMateria();
 		AMateria(std::string const & type);
 		AMateria(const AMateria &other);
 		AMateria& operator=(const AMateria &other);

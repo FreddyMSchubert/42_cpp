@@ -6,14 +6,14 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:00:02 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:00:55 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:16:07 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure(std::string const & type) : _type("cure") {}
-Cure::Cure(const Cure &other) : _type(other._type) {}
+Cure::Cure() { _type = "cure"; }
+Cure::Cure(const Cure &other) { _type = other._type; }
 Cure::~Cure() {}
 Cure& Cure::operator=(const Cure &other)
 {
@@ -33,5 +33,5 @@ Cure *Cure::clone() const
 }
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getType << "'s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

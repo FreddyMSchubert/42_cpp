@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 19:01:17 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:16:34 by fschuber         ###   ########.fr       */
+/*   Created: 2024/08/28 19:04:36 by fschuber          #+#    #+#             */
+/*   Updated: 2024/08/28 19:18:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 #include <iostream>
 
+#include "ICharacter.hpp"
 #include "AMateria.hpp"
 
-class Cure : public AMateria
+class Character : public ICharacter
 {
 	public:
-		Cure();
-		Cure(const Cure &other);
-		Cure& operator=(const Cure &other);
-		virtual ~Cure();
+		Character(std::string const & name);
+		Character(const Character &other);
+		Character& operator=(const Character &other);
+		virtual ~Character();
 
-		std::string const & getType() const;
+		std::string const & getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 
-		Cure* clone() const;
-		void use(ICharacter& target);
+	private:
+		AMateria	*inventory[4];
+		std::string	name;
 };
