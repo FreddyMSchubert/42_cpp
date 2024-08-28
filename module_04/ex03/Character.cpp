@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:17:26 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:25:24 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:44:57 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ Character& Character::operator=(const Character &other)
 		else
 			inventory[i] = NULL;
 	}
+	return *this;
 }
 Character::~Character()
 {

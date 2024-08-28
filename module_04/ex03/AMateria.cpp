@@ -6,13 +6,14 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:47:05 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:35:26 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:38:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
 // What even is a Materia? You're missing an L there, buddy.
+// No wait I looked it up, it's a Final Fantasy thing. I never got around to playing those games.
 
 AMateria::AMateria() : _type("mysterious, wobbly materia") {}
 AMateria::AMateria(std::string const & type) : _type(type) {}

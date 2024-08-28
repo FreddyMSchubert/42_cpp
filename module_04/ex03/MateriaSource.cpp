@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:33:10 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:36:32 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:45:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &other)
 		else
 			source[i] = NULL;
 	}
-	return (*this);
+	return *this;
 }
 MateriaSource::~MateriaSource()
 {
@@ -71,4 +71,5 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 		if (source[i]->getType() == type)
 			return (source[i]->clone());
 	}
+	return NULL;
 }

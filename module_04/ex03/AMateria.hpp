@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:39:00 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:14:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:43:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
+
+class ICharacter; // forward declaration
 
 class AMateria
 {
