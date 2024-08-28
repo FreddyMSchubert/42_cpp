@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:39:21 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 20:08:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 20:24:24 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main()
 		tmp = src->createMateria("ice");
 		me->equip(tmp);
 		tmp = src->createMateria("cure");
+		me->use(0, *me);
 		me->equip(tmp);
 
 		ICharacter* bob = new Character("bob");
@@ -53,10 +54,12 @@ int main()
 		AMateria *tmp = src->createMateria("ice");
 		std::cout << tmp->getType() << std::endl;
 		src->learnMateria(new Ice());
+		delete tmp;
 		tmp = src->createMateria("ice");
 		std::cout << tmp->getType() << std::endl;
 
 		delete src;
+		delete tmp;
 	}
 
 	{

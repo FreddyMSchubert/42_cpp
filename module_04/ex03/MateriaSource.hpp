@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:30:34 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:31:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 20:20:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include "IMateriaSource.hpp"
 #include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 #include <iostream>
 

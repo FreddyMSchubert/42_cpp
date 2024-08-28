@@ -6,14 +6,15 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:00:02 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:16:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 20:14:15 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
 Cure::Cure() { _type = "cure"; }
-Cure::Cure(const Cure &other) { _type = other._type; }
+Cure::Cure(const Cure &other) : AMateria(other)
+{ _type = other._type; }
 Cure::~Cure() {}
 Cure& Cure::operator=(const Cure &other)
 {

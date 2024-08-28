@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:17:26 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/28 19:44:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/08/28 20:28:46 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,15 @@ void Character::equip(AMateria* m)
 			return ;
 		}
 	}
+	std::cout << "Inventory is full, cannot equip more materia" << std::endl;
+	std::cout << "Deleting materia" << std::endl;
+	delete m;
 }
 void Character::unequip(int idx)
 {
+	if (!inventory[idx])
+		return ;
+	delete inventory[idx];
 	inventory[idx] = NULL;
 }
 void Character::use(int idx, ICharacter& target)
