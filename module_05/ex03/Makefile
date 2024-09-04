@@ -1,4 +1,4 @@
-EXECUTABLE := 28bc
+EXECUTABLE := better_than_coffee_making
 
 SRC := $(shell find . -name "*.cpp")
 OBJ := $(SRC:.cpp=.o)
