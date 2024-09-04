@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:48:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:07:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 08:52:08 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,28 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& f)
 {
 	os << f.getName() << ", bureaucrat grade " << f.getGrade();
 	return os;
+}
+
+/* ----- FORM SIGNING ----- */
+
+void Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		if (form.getIsSigned())
+		{
+			std::cout << this->getName() << " cannot sign " << form.getName() << " because it is already signed" << std::endl;
+			return ;
+		}
+		form.beSigned(*this);
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	}
+	catch (GradeTooHighException& e)
+	{
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+	catch (GradeTooLowException& e)
+	{
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+	}
 }

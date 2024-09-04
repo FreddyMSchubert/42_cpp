@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:48:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:07:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 08:38:44 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 
 #include "BureaucratExceptions.hpp"
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -36,6 +37,8 @@ class Bureaucrat
 
 		void incrementGrade();
 		void decrementGrade();
+
+		void signForm(Form &form);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& f);

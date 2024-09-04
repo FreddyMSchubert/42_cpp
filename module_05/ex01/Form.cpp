@@ -6,11 +6,12 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 08:19:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:34:46 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 08:49:30 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 /* ----- CONSTRUCTION ----- */
 
@@ -56,10 +57,11 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 
 std::ostream& operator<<(std::ostream &out, const Form &form)
 {
-	out << "Form " << form.getName() << " is ";
+	out << "Form " << form.getName();
 	if (form.getIsSigned())
-		out << "signed";
+		out << " was signed";
 	else
-		out << "not signed";
-	out << " and requires grade " << form.getSignGrade() << " to sign and grade " << form.getExecGrade() << " to execute" << std::endl;
+		out << " is not signed";
+	out << " and requires grade " << form.getSignGrade() << " to sign and grade " << form.getExecGrade() << " to execute";
+	return out;
 }

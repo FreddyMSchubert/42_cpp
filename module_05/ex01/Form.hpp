@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 08:19:44 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:22:48 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 08:44:42 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <iostream>
 
-#include "Bureaucrat.hpp"
+class Bureaucrat;
 #include "BureaucratExceptions.hpp"
 
 class Form

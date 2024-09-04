@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 08:08:03 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:15:31 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 08:51:17 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,65 +14,28 @@
 
 int main()
 {
-	Bureaucrat a("Alex", 1);
-	Bureaucrat b("Bob", 150);
-	Bureaucrat c("Charlie", 75);
+	Bureaucrat a("Andrea", 1);
+	Bureaucrat b("Bobby", 150);
+	Bureaucrat c("Carl", 75);
 
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << c << std::endl;
 
-	try
-	{
-		a.incrementGrade();
-	}
-	catch (const std::exception& e)
-	{ std::cerr << e.what() << '\n'; }
-	try
-	{
-		b.incrementGrade();
-	}
-	catch (const std::exception& e)
-	{ std::cerr << e.what() << '\n'; }
-	try
-	{
-		c.incrementGrade();
-	}
-	catch (const std::exception& e)
-	{ std::cerr << e.what() << '\n'; }
+	Form f("Form1", 1, 1);
+	std::cout << f << std::endl;
+	Form g("Form2", 149, 150);
+	std::cout << g << std::endl;
+	Form h("Form3", 76, 75);
+	std::cout << h << std::endl;
 
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << c << std::endl;
+	a.signForm(f);
+	b.signForm(g);
+	c.signForm(h);
 
-	a.setGrade(1);
-	b.setGrade(150);
-	c.setGrade(75);
-
-	std::cout << std::endl;
-
-	try
-	{
-		a.decrementGrade();
-	}
-	catch (const std::exception& e)
-	{ std::cerr << e.what() << '\n'; }
-	try
-	{
-		b.decrementGrade();
-	}
-	catch (const std::exception& e)
-	{ std::cerr << e.what() << '\n'; }
-	try
-	{
-		c.decrementGrade();
-	}
-	catch (const std::exception& e)
-	{ std::cerr << e.what() << '\n'; }
-
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << c << std::endl;
+	std::cout << f << std::endl;
+	std::cout << g << std::endl;
+	std::cout << h << std::endl;
 
 	return 0;
 };

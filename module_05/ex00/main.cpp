@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 08:08:03 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:15:31 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 08:41:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@ int main()
 	Bureaucrat a("Alex", 1);
 	Bureaucrat b("Bob", 150);
 	Bureaucrat c("Charlie", 75);
+
+	try
+	{
+		Bureaucrat d("Dennis", 0);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
