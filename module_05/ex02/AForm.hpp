@@ -40,7 +40,7 @@ class AForm
 		int getExecGrade() const;
 
 		void beSigned(Bureaucrat &bureaucrat);
-		virtual void execute(Bureaucrat const & executor) const = 0;
+		virtual void execute(Bureaucrat const & executor) const;
 };
 
 std::ostream& operator<<(std::ostream &out, const AForm &AForm);

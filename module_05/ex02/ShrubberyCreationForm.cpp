@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:06:18 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 09:22:16 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:03:08 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	if (!this->canBeExecuted(executor))
 		return;
 	std::string filename = this->target + "_shrubbery";
-	std::ofstream outFile(filename);
+	std::ofstream outFile(filename, std::ios::app);
 	if (!outFile.is_open() || outFile.fail())
 	{
 		std::cerr << "Error opening file \"" << filename << "\".";

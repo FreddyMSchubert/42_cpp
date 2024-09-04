@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 /* ----- CONSTRUCTION ----- */
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) :
-	AForm("RobotomyRequestForm", 72, 45)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) :
+	AForm("PresidentialPardonForm", 25, 5)
 {
 	this->target = target;
 }
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) :
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) :
 	AForm(copy)
 {
 	this->target = copy.target;
 }
-RobotomyRequestForm::~RobotomyRequestForm() {}
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &copy)
+PresidentialPardonForm::~PresidentialPardonForm() {}
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &copy)
 {
 	this->target = copy.target;
 	return *this;
@@ -33,11 +33,9 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &c
 
 /* ----- EXECUTION ----- */
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (!this->canBeExecuted(executor))
 		return;
-	srand(time(NULL));
-	std::cout << "*drilling noises* ";
-	(rand() % 2 ? std::cout << this->target << " has been robotomized successfully" : std::cout << this->target << " robotomization failed") << std::endl;
+	std::cout << this->target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

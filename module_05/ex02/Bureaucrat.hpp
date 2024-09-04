@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:48:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:38:44 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:33:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 
 #include "BureaucratExceptions.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat
 {
@@ -38,7 +38,8 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 
-		void signForm(Form &form);
+		void signForm(AForm &form);
+		void executeForm(AForm &form);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& f);

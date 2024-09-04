@@ -3,39 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 08:08:03 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:51:17 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:00:16 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-	Bureaucrat a("Andrea", 1);
-	Bureaucrat b("Bobby", 150);
-	Bureaucrat c("Carl", 75);
+	Bureaucrat boss_man("el jefe", 1);
+	Bureaucrat dude("el tipo", 43);
+	Bureaucrat slave("el peon", 150);
 
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << c << std::endl;
+	AForm *forms[3] = {
+		new RobotomyRequestForm("sad non-robot"),
+		new ShrubberyCreationForm("home"),
+		new PresidentialPardonForm("some dude")
+	};
 
-	Form f("Form1", 1, 1);
-	std::cout << f << std::endl;
-	Form g("Form2", 149, 150);
-	std::cout << g << std::endl;
-	Form h("Form3", 76, 75);
-	std::cout << h << std::endl;
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << *forms[i] << std::endl;
+		slave.executeForm(*forms[i]);
+		dude.executeForm(*forms[i]);
+		boss_man.executeForm(*forms[i]);
+	}
 
-	a.signForm(f);
-	b.signForm(g);
-	c.signForm(h);
+	std::cout << std::endl;
 
-	std::cout << f << std::endl;
-	std::cout << g << std::endl;
-	std::cout << h << std::endl;
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << *forms[i] << std::endl;
+		slave.signForm(*forms[i]);
+		dude.signForm(*forms[i]);
+		boss_man.signForm(*forms[i]);
+	}
+
+	std::cout << std::endl;
+
+	for (int i = 0; i < 3; i++)
+	{
+		std::cout << *forms[i] << std::endl;
+		slave.executeForm(*forms[i]);
+		dude.executeForm(*forms[i]);
+		boss_man.executeForm(*forms[i]);
+	}
+
+	for (int i = 0; i < 3; i++)
+		delete forms[i];
 
 	return 0;
 };

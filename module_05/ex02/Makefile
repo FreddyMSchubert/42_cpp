@@ -16,6 +16,7 @@ clean:
 	rm -rf $(OBJ)
 
 fclean: clean
+	rm -f *_shrubbery
 	rm -rf $(EXECUTABLE)
 
 re: fclean all
