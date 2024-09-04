@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:06:18 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 12:03:08 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/04 12:11:24 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) 
 	AForm(copy)
 {
 	this->target = copy.target;
-}
-ShrubberyCreationForm::~ShrubberyCreationForm() {}
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy)
-{
-	this->target = copy.target;
-	return *this;
 }
 
 /* ----- EXECUTION ----- */

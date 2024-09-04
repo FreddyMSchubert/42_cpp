@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 08:19:30 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:49:30 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:11:58 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ Form::Form(std::string name, int signGrade, int execGrade) :
 		throw GradeTooLowException();
 };
 Form::Form(const Form &copy) : Form(copy.getName(), copy.getSignGrade(), copy.getExecGrade()) {};
-Form::~Form() {};
-Form& Form::operator=(const Form &copy)
-{
-	if (this == &copy)
-		return *this;
-	this->isSigned = copy.getIsSigned();
-	return *this;
-}
 
 /* ----- GETTERS & SETTERS ----- */
 

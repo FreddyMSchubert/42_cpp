@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:48:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:52:08 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:07:23 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy)
 	this->setName(copy.getName());
 	this->setGrade(copy.getGrade());
 }
-Bureaucrat::~Bureaucrat() {}
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &copy)
 {
 	if (this == &copy)

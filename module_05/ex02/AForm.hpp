@@ -31,8 +31,8 @@ class AForm
 	public:
 		AForm(std::string name, int signGrade, int execGrade);
 		AForm(const AForm &copy);
-		virtual ~AForm();
-		AForm& operator=(const AForm &copy);
+		virtual ~AForm() = default;
+		AForm& operator=(const AForm &copy) = delete;
 
 		std::string getName() const;
 		bool getIsSigned() const;

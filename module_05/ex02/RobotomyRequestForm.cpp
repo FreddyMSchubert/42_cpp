@@ -24,12 +24,6 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) :
 {
 	this->target = copy.target;
 }
-RobotomyRequestForm::~RobotomyRequestForm() {}
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &copy)
-{
-	this->target = copy.target;
-	return *this;
-}
 
 /* ----- EXECUTION ----- */
 

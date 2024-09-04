@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:48:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 11:37:06 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/04 12:06:52 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy)
 	this->setName(copy.getName());
 	this->setGrade(copy.getGrade());
 }
-Bureaucrat::~Bureaucrat() {}
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &copy)
 {
 	if (this == &copy)

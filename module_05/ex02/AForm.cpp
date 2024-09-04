@@ -24,14 +24,6 @@ AForm::AForm(std::string name, int signGrade, int execGrade) :
 		throw GradeTooLowException();
 };
 AForm::AForm(const AForm &copy) : AForm(copy.getName(), copy.getSignGrade(), copy.getExecGrade()) {};
-AForm::~AForm() {};
-AForm& AForm::operator=(const AForm &copy)
-{
-	if (this == &copy)
-		return *this;
-	this->isSigned = copy.getIsSigned();
-	return *this;
-}
 
 /* ----- GETTERS & SETTERS ----- */
 

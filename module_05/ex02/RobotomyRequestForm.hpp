@@ -25,8 +25,8 @@ class RobotomyRequestForm : public AForm
 	public:
 		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm &copy);
-		~RobotomyRequestForm();
-		RobotomyRequestForm& operator=(const RobotomyRequestForm &copy);
+		~RobotomyRequestForm() = default;
+		RobotomyRequestForm& operator=(const RobotomyRequestForm &copy) = delete;
 
 		void execute(Bureaucrat const & executor) const;
 };

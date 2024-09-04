@@ -24,12 +24,6 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &cop
 {
 	this->target = copy.target;
 }
-PresidentialPardonForm::~PresidentialPardonForm() {}
-PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &copy)
-{
-	this->target = copy.target;
-	return *this;
-}
 
 /* ----- EXECUTION ----- */
 

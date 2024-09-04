@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:48:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:07:21 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:07:40 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Bureaucrat
 		Bureaucrat() = delete;
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &copy);
-		~Bureaucrat();
+		~Bureaucrat() = default;
 		Bureaucrat& operator=(const Bureaucrat &copy);
 
 		std::string getName() const;
