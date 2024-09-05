@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/05 11:24:07 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:34:52 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,35 +145,42 @@ void	ScalarConverter::convert(std::string input)
 	int asciiValue;
 	std::string charRepresentation;
 	double num;
-	switch (type)
+	try
 	{
-		case CHAR:
-			printTypes(input, std::to_string(static_cast<int>(input[0])), std::to_string(static_cast<float>(input[0])), std::to_string(static_cast<double>(input[0])), type);
-			break;
-		case INT:
-			asciiValue = std::stoi(input);
-			charRepresentation = isprint(asciiValue) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
-			printTypes(charRepresentation, input, std::to_string(static_cast<float>(std::stoi(input))), std::to_string(static_cast<double>(std::stoi(input))), type);
-			break;
-		case FLOAT:
-		case DOUBLE:
-			num = type == FLOAT ? std::stof(input) : std::stod(input);
-			asciiValue = static_cast<int>(num);
-			charRepresentation = isprint(asciiValue) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
-			printTypes(charRepresentation, std::to_string(static_cast<int>(num)), std::to_string(static_cast<float>(num)), std::to_string(num), type);
-			break;
-		case INF:
-			printTypes("impossible", "impossible", "inff", "inf", type);
-			break;
-		case NEG_INF:
-			printTypes("impossible", "impossible", "-inff", "-inf", type);
-			break;
-		case NONUM:
-			printTypes("impossible", "impossible", "nanf", "nan", type);
-			break;
-		case INVALID:
-		default:
-			std::cout << "Invalid input" << std::endl;
-			break;
+		switch (type)
+		{
+			case CHAR:
+				printTypes(input, std::to_string(static_cast<int>(input[0])), std::to_string(static_cast<float>(input[0])), std::to_string(static_cast<double>(input[0])), type);
+				break;
+			case INT:
+				asciiValue = std::stoi(input);
+				charRepresentation = (asciiValue >= 32 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
+				printTypes(charRepresentation, input, std::to_string(static_cast<float>(std::stoi(input))), std::to_string(static_cast<double>(std::stoi(input))), type);
+				break;
+			case FLOAT:
+			case DOUBLE:
+				num = type == FLOAT ? std::stof(input) : std::stod(input);
+				asciiValue = static_cast<int>(num);
+				charRepresentation = (asciiValue >= 32 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
+				printTypes(charRepresentation, std::to_string(static_cast<int>(num)), std::to_string(static_cast<float>(num)), std::to_string(num), type);
+				break;
+			case INF:
+				printTypes("impossible", "impossible", "inff", "inf", type);
+				break;
+			case NEG_INF:
+				printTypes("impossible", "impossible", "-inff", "-inf", type);
+				break;
+			case NONUM:
+				printTypes("impossible", "impossible", "nanf", "nan", type);
+				break;
+			case INVALID:
+			default:
+				std::cout << "Invalid input" << std::endl;
+				break;
+		}
+	}
+	catch (std::exception & e)
+	{
+		std::cout << "Conversion failed" << std::endl;
 	}
 }
