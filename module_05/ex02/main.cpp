@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 08:08:03 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 12:00:16 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:54:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ int main()
 		dude.executeForm(*forms[i]);
 		boss_man.executeForm(*forms[i]);
 	}
+
+	std::cout << std::endl;
+
+	for (int i = 0; i < 42; i++)
+		boss_man.executeForm(*forms[0]);
 
 	for (int i = 0; i < 3; i++)
 		delete forms[i];
