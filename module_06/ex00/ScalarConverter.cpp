@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/05 11:43:38 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/05 13:21:30 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,37 @@ static ScalarType	getType(std::string input)
 	return INVALID;
 }
 
+static bool	isWithinLimits(std::string input, ScalarType type)
+{
+	// check against int max etc
+	try
+	{
+		if (type == INT)
+			std::stoi(input);
+		else if (type == FLOAT)
+			std::stof(input);
+		else if (type == DOUBLE)
+			std::stod(input);
+		return true;
+	}
+	catch (std::exception & e)
+	{
+		return false;
+	}
+	return true;
+}
+
 void	ScalarConverter::convert(std::string input)
 {
 	ScalarType type = getType(input);
 	int asciiValue;
 	std::string charRepresentation;
 	double num;
+	if (!isWithinLimits(input, type))
+	{
+		std::cout << "Input out of range" << std::endl;
+		return ;
+	}
 	try
 	{
 		switch (type)
