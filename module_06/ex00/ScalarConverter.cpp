@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/05 11:08:47 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:24:07 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,11 @@ void	printTypes(std::string c, std::string i, std::string f, std::string d, Scal
 {
 	std::cout << "Identified type: ";
 	printDataType(type);
-	std::cout << "char  : " << c << std::endl;
-	std::cout << "int   : " << i << std::endl;
-	std::cout << "float : " << f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+	std::cout << ANSI_BACKGROUND_RED << "char  : " << c << ANSI_COLOR_RESET << std::endl;
+	std::cout << ANSI_BACKGROUND_GREEN << "int   : " << i << ANSI_COLOR_RESET << std::endl;
+	std::cout << ANSI_BACKGROUND_YELLOW << "float : " << f << "f" << ANSI_COLOR_RESET << std::endl;
+	std::cout << ANSI_BACKGROUND_BLUE << "double: " << d << ANSI_COLOR_RESET << std::endl;
+	std::cout << ANSI_COLOR_RESET;
 }
 
 /* ----- MAIN CONVERSION ----- */
@@ -141,19 +142,25 @@ static ScalarType	getType(std::string input)
 void	ScalarConverter::convert(std::string input)
 {
 	ScalarType type = getType(input);
+	int asciiValue;
+	std::string charRepresentation;
+	double num;
 	switch (type)
 	{
 		case CHAR:
 			printTypes(input, std::to_string(static_cast<int>(input[0])), std::to_string(static_cast<float>(input[0])), std::to_string(static_cast<double>(input[0])), type);
 			break;
 		case INT:
-			printTypes(std::to_string(static_cast<char>(std::stoi(input))), input, std::to_string(static_cast<float>(std::stoi(input))), std::to_string(static_cast<double>(std::stoi(input))), type);
+			asciiValue = std::stoi(input);
+			charRepresentation = isprint(asciiValue) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
+			printTypes(charRepresentation, input, std::to_string(static_cast<float>(std::stoi(input))), std::to_string(static_cast<double>(std::stoi(input))), type);
 			break;
 		case FLOAT:
-			printTypes(std::to_string(static_cast<char>(std::stof(input))), std::to_string(static_cast<int>(std::stof(input))), input, std::to_string(static_cast<double>(std::stof(input))), type);
-			break;
 		case DOUBLE:
-			printTypes(std::to_string(static_cast<char>(std::stod(input))), std::to_string(static_cast<int>(std::stod(input))), std::to_string(static_cast<float>(std::stod(input))), input, type);
+			num = type == FLOAT ? std::stof(input) : std::stod(input);
+			asciiValue = static_cast<int>(num);
+			charRepresentation = isprint(asciiValue) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
+			printTypes(charRepresentation, std::to_string(static_cast<int>(num)), std::to_string(static_cast<float>(num)), std::to_string(num), type);
 			break;
 		case INF:
 			printTypes("impossible", "impossible", "inff", "inf", type);
