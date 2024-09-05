@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:48:22 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 12:07:43 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:46:16 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 /* ----- CONSTRUCTION ----- */
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
-	this->setName(name);
 	this->setGrade(grade);
 }
-Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.getName())
 {
-	this->setName(copy.getName());
 	this->setGrade(copy.getGrade());
 }
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &copy)
 {
 	if (this == &copy)
 		return *this;
-	this->setName(copy.getName());
 	this->setGrade(copy.getGrade());
 	return *this;
 }
@@ -40,8 +37,6 @@ std::string Bureaucrat::getName() const
 { return this->name; }
 int Bureaucrat::getGrade() const
 { return this->grade; }
-void Bureaucrat::setName(std::string name)
-{ this->name = name; }
 void Bureaucrat::setGrade(int grade)
 {
 	if (grade < 1)

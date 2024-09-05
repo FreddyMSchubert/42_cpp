@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 07:48:45 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 12:07:40 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/05 11:46:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 class Bureaucrat
 {
 	private:
-		std::string name;
+		const std::string name;
 		int grade;
+
+		void setGrade(int grade);
 
 	public:
 		Bureaucrat() = delete;
@@ -31,8 +33,6 @@ class Bureaucrat
 
 		std::string getName() const;
 		int getGrade() const;
-		void setName(std::string name);
-		void setGrade(int grade);
 
 		void incrementGrade();
 		void decrementGrade();

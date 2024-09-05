@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 08:08:03 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/04 08:41:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:47:12 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int main()
 	std::cout << b << std::endl;
 	std::cout << c << std::endl;
 
-	a.setGrade(1);
-	b.setGrade(150);
-	c.setGrade(75);
+	a.decrementGrade();
+	b.decrementGrade();
+	c.decrementGrade();
 
 	std::cout << std::endl;
 
