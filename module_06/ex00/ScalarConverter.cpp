@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/05 11:34:52 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:42:20 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ static ScalarType	getType(std::string input)
 		return INVALID;
 	typedef bool(*TypeFinders)(const std::string);
 	TypeFinders finders[] = {isChar, isInt, isFloat, isDouble, isPosInf, isNegInf, isNan};
-	for (size_t i = 0; i < 9; i++)
+	for (size_t i = 0; i < 7; i++)
 		if (finders[i](input))
 			return static_cast<ScalarType>(i);
 	return INVALID;
@@ -154,24 +154,24 @@ void	ScalarConverter::convert(std::string input)
 				break;
 			case INT:
 				asciiValue = std::stoi(input);
-				charRepresentation = (asciiValue >= 32 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
+				charRepresentation = (asciiValue >= 33 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
 				printTypes(charRepresentation, input, std::to_string(static_cast<float>(std::stoi(input))), std::to_string(static_cast<double>(std::stoi(input))), type);
 				break;
 			case FLOAT:
 			case DOUBLE:
 				num = type == FLOAT ? std::stof(input) : std::stod(input);
 				asciiValue = static_cast<int>(num);
-				charRepresentation = (asciiValue >= 32 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
+				charRepresentation = (asciiValue >= 33 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
 				printTypes(charRepresentation, std::to_string(static_cast<int>(num)), std::to_string(static_cast<float>(num)), std::to_string(num), type);
 				break;
 			case INF:
-				printTypes("impossible", "impossible", "inff", "inf", type);
+				printTypes("impossible", "impossible", "inf", "inf", type);
 				break;
 			case NEG_INF:
-				printTypes("impossible", "impossible", "-inff", "-inf", type);
+				printTypes("impossible", "impossible", "-inf", "-inf", type);
 				break;
 			case NONUM:
-				printTypes("impossible", "impossible", "nanf", "nan", type);
+				printTypes("impossible", "impossible", "nan", "nan", type);
 				break;
 			case INVALID:
 			default:
