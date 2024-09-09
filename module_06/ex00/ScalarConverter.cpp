@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/06 09:42:52 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/09 18:19:49 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static bool	isFloat(std::string input)
 	bool dotEncountered = false;
 	if (input.back() != 'f')
 		return false;
-	for (size_t i = 0; i < input.length(); i++)
+	for (size_t i = 0; i < input.length() - 1; i++)
 	{
 		if (i == 0 && !std::isdigit(input[i]) && input[i] != '.' && input[i] != '-' && input[i] != '+')
 			return false;
@@ -138,6 +138,7 @@ static ScalarType	getType(std::string input)
 	for (size_t i = 0; i < 7; i++)
 		if (finders[i](input))
 			return static_cast<ScalarType>(i);
+	std::cout << "Couldn't find matching data type." << std::endl;
 	return INVALID;
 }
 

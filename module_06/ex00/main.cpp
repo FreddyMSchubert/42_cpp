@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:56:13 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/06 09:36:44 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/09 18:18:31 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,20 @@ int	main()
 	runTest("+inf");
 	runTest("-inf");
 	runTest("-inff");
-	runTest(std::to_string(std::numeric_limits<char>::max()));
-	runTest(std::to_string(static_cast<int>(std::numeric_limits<char>::max()) + 1));
-	runTest(std::to_string(std::numeric_limits<char>::min())); //
-	runTest(std::to_string(static_cast<int>(std::numeric_limits<char>::min()) - 1)); //
-	runTest(std::to_string(std::numeric_limits<int>::max()));
-	runTest(std::to_string(static_cast<long long>(std::numeric_limits<int>::max()) + 1LL));
-	runTest(std::to_string(std::numeric_limits<int>::min()));
-	runTest(std::to_string(static_cast<long long>(std::numeric_limits<int>::min()) - 1LL));
-	runTest(std::to_string(std::numeric_limits<float>::max()) + 'f'); //
-	runTest(std::to_string(static_cast<double>(std::numeric_limits<float>::max()) + 1.0) + 'f'); // 
-	runTest(std::to_string(std::numeric_limits<float>::min()) + 'f'); //
-	runTest(std::to_string(static_cast<double>(std::numeric_limits<float>::min()) - 1.0) + 'f'); //
-	runTest(std::to_string(std::numeric_limits<double>::max()));
-	runTest(std::to_string(std::numeric_limits<double>::max() + 1.0));
-	runTest(std::to_string(std::numeric_limits<double>::min()));
-	runTest(std::to_string(std::numeric_limits<double>::min() - 1.0));
+	runTest("127");
+	runTest("128");
+	runTest("-128");
+	runTest("-129");
+	runTest("2147483647");
+	runTest("2147483648");
+	runTest("-2147483648");
+	runTest("-2147483649");
+	runTest("340282346638528859811704183484516925440.0f");
+	runTest("340282346638528859811704183484516925441.0f");
+	runTest("-340282346638528859811704183484516925440.0f");
+	runTest("-340282346638528859811704183484516925441.0f");
+	runTest("179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0");
+	runTest("179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858369.0");
+	runTest("-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0");
+	runTest("-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858369.0");
 }
