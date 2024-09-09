@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/05 13:21:30 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/06 09:42:52 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ static bool	isInt(std::string input)
 static bool	isFloat(std::string input)
 {
 	bool dotEncountered = false;
-	bool numberEncountered = false;
 	if (input.back() != 'f')
 		return false;
 	for (size_t i = 0; i < input.length(); i++)
 	{
-		if (std::isdigit(input[i]))
-			numberEncountered = true;
 		if (i == 0 && !std::isdigit(input[i]) && input[i] != '.' && input[i] != '-' && input[i] != '+')
 			return false;
 		if (input[i] == '.')
@@ -53,7 +50,7 @@ static bool	isFloat(std::string input)
 		else if (!std::isdigit(input[i]))
 			return false;
 	}
-	return numberEncountered;
+	return true;
 }
 static bool	isDouble(std::string input)
 {
@@ -78,7 +75,7 @@ static bool	isPosInf(std::string input)
 static bool	isNegInf(std::string input)
 { return input == "-inf" || input == "-inff"; }
 static bool	isNan(std::string input)
-{ return input == "nan"; }
+{ return input == "nan" || input == "nanf"; }
 
 /* ----- PRINTING ----- */
 
@@ -116,9 +113,14 @@ void	printDataType(ScalarType type)
 
 void	printTypes(std::string c, std::string i, std::string f, std::string d, ScalarType type)
 {
-	std::cout << "Identified type: ";
+	std::cout << "TYPE  : ";
 	printDataType(type);
-	std::cout << ANSI_BACKGROUND_RED << "char  : " << c << ANSI_COLOR_RESET << std::endl;
+	std::cout << ANSI_BACKGROUND_RED << "char  : ";
+	if (c.length() == 1)
+		std::cout << "'" << c << "'";
+	else
+		std::cout << c;
+	std::cout << ANSI_COLOR_RESET << std::endl;
 	std::cout << ANSI_BACKGROUND_GREEN << "int   : " << i << ANSI_COLOR_RESET << std::endl;
 	std::cout << ANSI_BACKGROUND_YELLOW << "float : " << f << "f" << ANSI_COLOR_RESET << std::endl;
 	std::cout << ANSI_BACKGROUND_BLUE << "double: " << d << ANSI_COLOR_RESET << std::endl;
@@ -179,14 +181,14 @@ void	ScalarConverter::convert(std::string input)
 				break;
 			case INT:
 				asciiValue = std::stoi(input);
-				charRepresentation = (asciiValue >= 33 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
+				charRepresentation = (asciiValue >= 33 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Not displayable";
 				printTypes(charRepresentation, input, std::to_string(static_cast<float>(std::stoi(input))), std::to_string(static_cast<double>(std::stoi(input))), type);
 				break;
 			case FLOAT:
 			case DOUBLE:
 				num = type == FLOAT ? std::stof(input) : std::stod(input);
 				asciiValue = static_cast<int>(num);
-				charRepresentation = (asciiValue >= 33 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Non displayable";
+				charRepresentation = (asciiValue >= 33 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Not displayable";
 				printTypes(charRepresentation, std::to_string(static_cast<int>(num)), std::to_string(static_cast<float>(num)), std::to_string(num), type);
 				break;
 			case INF:
