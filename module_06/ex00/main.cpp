@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 10:56:13 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/09 18:18:31 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/10 09:48:59 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+#define BASIC_TESTS "------------------ BASIC TESTS ------------------"
+#define FLOAT_TESTS "------------------ FLOAT TESTS ------------------"
+#define INF_TESTS "------------------ INF TESTS ------------------"
+#define RANGE_TESTS "------------------ RANGE TESTS ------------------"
+#define CHAR_TESTS "------------------ CHAR TESTS ------------------"
 
 void	runTest(std::string test)
 {
@@ -21,6 +27,7 @@ void	runTest(std::string test)
 
 int	main()
 {
+	std::cout << std::endl << std::endl << BASIC_TESTS << std::endl;
 	runTest("42");
 	runTest("-42");
 	runTest("-");
@@ -34,14 +41,27 @@ int	main()
 	runTest("483a649");
 	runTest("ß");
 	runTest("apple");
-	runTest("42.0f"); //
-	runTest("42.f"); //
-	runTest(".3f"); //
+	runTest(" ");
+	runTest("                         ");
+	runTest("\n");
+	runTest("\t");
+	runTest("\v");
+	runTest("\r");
+
+	std::cout << std::endl << std::endl << FLOAT_TESTS << std::endl;
+	runTest("42.0f ");
+	runTest(" 42.0f");
+	runTest(" 42.0f ");
+	runTest(" 43.0f	");
+	runTest(" 44.0f\v");
+	runTest("42.0f");
+	runTest("42.f");
+	runTest(".3f");
 	runTest(".f");
-	runTest("123.123f"); //
+	runTest("123.123f");
 	runTest("123.123f.");
 	runTest("123123f.");
-	runTest("123123.f"); //
+	runTest("123123.f");
 	runTest("123.123f.23");
 	runTest("123.123.23");
 	runTest("123.123.0");
@@ -50,14 +70,10 @@ int	main()
 	runTest("123.1f1");
 	runTest("f");
 	runTest("35.3F");
-	runTest("\n"); //
-	runTest("\t"); //
-	runTest("\v"); //
-	runTest("\r"); //
 	runTest("29.3");
 	runTest("29. 3");
-	runTest(" ");
-	runTest("                         ");
+
+	std::cout << std::endl << std::endl << INF_TESTS << std::endl;
 	runTest("nan");
 	runTest("nanf");
 	runTest("inf");
@@ -66,6 +82,8 @@ int	main()
 	runTest("+inf");
 	runTest("-inf");
 	runTest("-inff");
+
+	std::cout << std::endl << std::endl << RANGE_TESTS << std::endl;
 	runTest("127");
 	runTest("128");
 	runTest("-128");
@@ -82,4 +100,10 @@ int	main()
 	runTest("179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858369.0");
 	runTest("-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0");
 	runTest("-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858369.0");
+	
+	std::cout << std::endl << std::endl << CHAR_TESTS << std::endl;
+	for (int i = -1; i < 129; i++)
+	{
+		runTest(std::to_string(i));
+	}
 }

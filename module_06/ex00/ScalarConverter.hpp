@@ -6,13 +6,14 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:49 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/05 11:13:43 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/10 09:47:43 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <sstream>
 #include "colors.h"
 
 enum ScalarType

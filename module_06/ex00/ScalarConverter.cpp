@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/09 18:19:49 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/10 09:47:09 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static bool	isInt(std::string input)
 	{
 		if (i == 0 && !std::isdigit(input[i]) && input[i] != '-' && input[i] != '+')
 			return false;
+		if (i == 0)
+			continue;
 		if (!std::isdigit(input[i]))
 			return false;
 	}
@@ -76,6 +78,19 @@ static bool	isNegInf(std::string input)
 { return input == "-inf" || input == "-inff"; }
 static bool	isNan(std::string input)
 { return input == "nan" || input == "nanf"; }
+
+/* ----- FORMATTING ------ */
+
+static std::string	trim(std::string input)
+{
+	std::ostringstream result;
+	for (size_t i = 0; i < input.length(); i++)
+	{
+		if (!std::isspace(static_cast<unsigned char>(input[i])))
+			result << input[i];
+	}
+	return result.str();
+}
 
 /* ----- PRINTING ----- */
 
@@ -164,6 +179,7 @@ static bool	isWithinLimits(std::string input, ScalarType type)
 
 void	ScalarConverter::convert(std::string input)
 {
+	input = trim(input);
 	ScalarType type = getType(input);
 	int asciiValue;
 	std::string charRepresentation;
@@ -178,7 +194,8 @@ void	ScalarConverter::convert(std::string input)
 		switch (type)
 		{
 			case CHAR:
-				printTypes(input, std::to_string(static_cast<int>(input[0])), std::to_string(static_cast<float>(input[0])), std::to_string(static_cast<double>(input[0])), type);
+				charRepresentation = (input[0] >= 33 && input[0] <= 126) ? std::string(1, input[0]) : "Not displayable";
+				printTypes(charRepresentation, std::to_string(static_cast<int>(input[0])), std::to_string(static_cast<float>(input[0])), std::to_string(static_cast<double>(input[0])), type);
 				break;
 			case INT:
 				asciiValue = std::stoi(input);
