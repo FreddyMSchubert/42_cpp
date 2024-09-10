@@ -25,12 +25,11 @@ Array<T>::Array(const Array& copy)
 	if (!copy.array)
 	{
 		this->array = NULL;
-		return *this;
+		return ;
 	}
 	this->array = new T[this->_size];
 	for (unsigned int i = 0; i < this->_size; i++)
 		this->array[i] = copy.array[i];
-	return *this;
 }
 
 template <typename T>
