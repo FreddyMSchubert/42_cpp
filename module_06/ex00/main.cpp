@@ -25,8 +25,14 @@ void	runTest(std::string test)
 	std::cout << std::endl;
 }
 
-int	main()
+int	main(int argc, char **argv)
 {
+	if (argc == 2)
+	{
+		ScalarConverter::convert(argv[1]);
+		return 0;
+	}
+
 	std::cout << std::endl << std::endl << BASIC_TESTS << std::endl;
 	runTest("42");
 	runTest("-42");
