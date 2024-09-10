@@ -20,3 +20,5 @@ fclean: clean
 	rm -rf $(EXECUTABLE)
 
 re: fclean all
+
+.PHONY: all clean fclean re
