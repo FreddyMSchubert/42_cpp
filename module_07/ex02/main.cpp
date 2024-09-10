@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:22:19 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/10 16:57:32 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:00:42 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main()
 {
 	Array<int> a(5);
 	Array<int> b(5);
+	std::cout << a.size() << std::endl;
 
 	for (unsigned int i = 0; i < 5; i++)
 	{
@@ -67,6 +68,19 @@ int main()
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << c[rand() % 5][rand() % 5][rand() % 5] << std::endl;
+	}
+
+	Array<int> d;
+	std::cout << d.size() << std::endl;
+	Array<int> e(5);
+	for (unsigned int i = 0; i < 5; i++)
+	{
+		e[i] = i;
+	}
+	d = e;
+	for (unsigned int i = 0; i < 5; i++)
+	{
+		std::cout << d[i] << std::endl;
 	}
 
 	return 0;
