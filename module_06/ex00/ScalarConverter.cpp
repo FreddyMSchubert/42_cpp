@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:54:41 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/10 09:47:09 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/10 10:21:01 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,20 @@ static std::string	trim(std::string input)
 	return result.str();
 }
 
+std::string formatFloatRange(double num)
+{
+	if (num > std::numeric_limits<float>::max() || num < -std::numeric_limits<float>::max())
+		return "out of float range";
+	return std::to_string(static_cast<float>(num));
+}
+
+std::string formatIntRange(double num)
+{
+	if (num > std::numeric_limits<int>::max() || num < std::numeric_limits<int>::min())
+		return "out of int range";
+	return std::to_string(static_cast<int>(num));
+}
+
 /* ----- PRINTING ----- */
 
 void	printDataType(ScalarType type)
@@ -137,7 +151,10 @@ void	printTypes(std::string c, std::string i, std::string f, std::string d, Scal
 		std::cout << c;
 	std::cout << ANSI_COLOR_RESET << std::endl;
 	std::cout << ANSI_BACKGROUND_GREEN << "int   : " << i << ANSI_COLOR_RESET << std::endl;
-	std::cout << ANSI_BACKGROUND_YELLOW << "float : " << f << "f" << ANSI_COLOR_RESET << std::endl;
+	if (std::isdigit(f.front()) || f.front() == '-')
+		std::cout << ANSI_BACKGROUND_YELLOW << "float : " << f << "f" << ANSI_COLOR_RESET << std::endl;
+	else
+		std::cout << ANSI_BACKGROUND_YELLOW << "float : " << f << ANSI_COLOR_RESET << std::endl;
 	std::cout << ANSI_BACKGROUND_BLUE << "double: " << d << ANSI_COLOR_RESET << std::endl;
 	std::cout << ANSI_COLOR_RESET;
 }
@@ -207,7 +224,7 @@ void	ScalarConverter::convert(std::string input)
 				num = type == FLOAT ? std::stof(input) : std::stod(input);
 				asciiValue = static_cast<int>(num);
 				charRepresentation = (asciiValue >= 33 && asciiValue <= 126) ? std::string(1, static_cast<char>(asciiValue)) : "Not displayable";
-				printTypes(charRepresentation, std::to_string(static_cast<int>(num)), std::to_string(static_cast<float>(num)), std::to_string(num), type);
+				printTypes(charRepresentation, formatIntRange(static_cast<double>(num)), formatFloatRange(static_cast<double>(num)), std::to_string(num), type);
 				break;
 			case INF:
 				printTypes("impossible", "impossible", "inf", "inf", type);
