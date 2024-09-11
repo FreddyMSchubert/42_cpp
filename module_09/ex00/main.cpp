@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:55:35 by fschube           #+#    #+#             */
-/*   Updated: 2024/09/12 00:55:35 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/12 01:22:51 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 #include "BitcoinExchange.hpp"
-
-#define DATA_FILE "data.csv"
-#define DATA_FILE_DELIMITER ","
-#define INPUT_FILE_DELIMITER " - "
 
 int main(int argc, char **argv)
 {
@@ -25,6 +21,8 @@ int main(int argc, char **argv)
 		std::cout << "Usage: ./btc [inputs file]" << std::endl;
 		return 1;
 	}
+
+	std::string input_file = argv[1];
 
 	BitcoinExchange exchange;
 	return 0;
