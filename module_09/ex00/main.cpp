@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 00:55:35 by fschube           #+#    #+#             */
-/*   Updated: 2024/09/12 01:22:51 by freddy           ###   ########.fr       */
+/*   Created: 2024/09/12 00:55:35 by fschuber          #+#    #+#             */
+/*   Updated: 2024/09/12 01:38:27 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	std::string input_file = argv[1];
-
 	BitcoinExchange exchange;
+	exchange.calculateExchange(argv[1]);
+
 	return 0;
 }

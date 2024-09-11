@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 01:00:03 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 01:26:00 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/12 01:42:47 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #define INPUT_FILE_DELIMITER " - "
 #define INPUT_FILE_HEADER "date | value"
 
+// assuming 31 as the maximum number of days in a month is fine for this exercise
 typedef struct s_date
 {
 	int		year, month, day;
@@ -32,6 +33,26 @@ typedef struct s_date
 			return month < other.month;
 		return day < other.day;
 	}
+
+	void operator--(int)
+	{
+		if (day == 1)
+		{
+			if (month == 1)
+			{
+				year--;
+				month = 12;
+				day = 31;
+			}
+			else
+			{
+				month--;
+				day = 31;
+			}
+		}
+		else
+			day--;
+	}
 }				t_date;
 
 class BitcoinExchange
@@ -42,7 +63,10 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange &obj);
 		BitcoinExchange &operator=(const BitcoinExchange &obj);
 
+		void calculateExchange(const std::string &input_file);
+
 	private:
 		std::map<t_date, double> data;
 
+		static t_date parseDate(const std::string &date);
 };
