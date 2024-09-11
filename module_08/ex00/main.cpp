@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 17:36:38 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/10 17:54:04 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/10 20:43:20 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ int main()
 			vec.push_back(rand() % 25);
 
 		std::cout << "Vector contents: ";
-		for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
-			std::cout << *it << " ";
+		for (int num : vec)
+			std::cout << num << " ";
 		std::cout << std::endl;
 
 		for (int i = 0; i < 10; i++)
 		{
 			try
 			{
-				std::vector<int>::iterator it = easyfind(vec, rand() % 25);
+				auto it = easyfind(vec, rand() % 25);
 				std::cout << "Element found: " << *it << std::endl;
 			}
 			catch (std::exception &e)
@@ -66,7 +66,7 @@ int main()
 			{
 				int nextTest = rand() % 250;
 				std::cout << "Test " << nextTest << ":\t";
-				std::list<int>::iterator it = easyfind(lst, nextTest);
+				auto it = easyfind(lst, nextTest);
 				std::cout << "Element found: " << *it << std::endl;
 				foundmatch = true;
 			}

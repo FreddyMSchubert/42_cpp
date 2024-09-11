@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 17:27:57 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/10 20:41:31 by freddy           ###   ########.fr       */
+/*   Created: 2024/09/10 20:51:02 by freddy            #+#    #+#             */
+/*   Updated: 2024/09/10 20:56:47 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <algorithm>
 #include <iostream>
+#include <set>
 
-template <typename T>
-typename T::iterator easyfind(T &container, int value)
+class Span
 {
-	typename T::iterator it = std::find(container.begin(), container.end(), value);
-	if (it == container.end())
-		throw std::runtime_error("Element not found in the container!");
-	std::cout << "THAT WORKED! Returning " << *it << std::endl;
-	return it;
-}
+	public:
+		Span(unsigned int n);
+		Span(Span const &other);
+		~Span() = default;
+		Span &operator=(Span const &other);
+
+		void addNumber(int n);
+		int shortestSpan();
+		int longestSpan();
+	
+	private:
+		unsigned int		_n;
+		std::multiset<int>	_numbers;
+};
