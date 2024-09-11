@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 20:50:54 by freddy            #+#    #+#             */
-/*   Updated: 2024/09/11 08:43:09 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/11 10:14:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Span::Span(unsigned int n) : _n(n) {}
 Span::Span(Span const &other) : _n(other._n), _numbers(other._numbers) {}
 Span &Span::operator=(Span const &other)
 {
-	if (this == &other)
+	if (this != &other)
 	{
 		_n = other._n;
 		_numbers = other._numbers;

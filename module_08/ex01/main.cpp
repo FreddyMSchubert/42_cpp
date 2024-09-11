@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:43:38 by freddy            #+#    #+#             */
-/*   Updated: 2024/09/11 08:49:42 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/11 10:17:49 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <vector>
 
 int main()
 {
@@ -33,9 +34,23 @@ int main()
 
 	{
 		srand(time(NULL));
-		Span sp = Span(100000);
-		for (int i = 0; i < 100000; i++)
+		Span sp = Span(10000);
+		for (int i = 0; i < 10000; i++)
 			sp.addNumber(rand());
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	{
+		Span sp = Span(10);
+		std::vector<int> vec;
+		for (int i = 0; i < 10; i++)
+			vec.push_back(i + rand() % 100);
+		sp.addNumber(vec.begin(), vec.end());
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}

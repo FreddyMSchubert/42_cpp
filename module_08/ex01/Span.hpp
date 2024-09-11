@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 20:51:02 by freddy            #+#    #+#             */
-/*   Updated: 2024/09/10 20:56:47 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/11 10:14:32 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ class Span
 		Span &operator=(Span const &other);
 
 		void addNumber(int n);
+		template <typename Iterator>
+		void addNumber(Iterator begin, Iterator end)
+		{
+			if (_numbers.size() + std::distance(begin, end) > _n)
+				throw std::out_of_range("Span is full");
+			_numbers.insert(begin, end);
+		}
 		int shortestSpan();
 		int longestSpan();
 	
