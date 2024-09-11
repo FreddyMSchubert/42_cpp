@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:43:38 by freddy            #+#    #+#             */
-/*   Updated: 2024/09/11 10:17:49 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:59:05 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,24 @@ int main()
 	{
 		srand(time(NULL));
 		Span sp = Span(10000);
-		for (int i = 0; i < 10000; i++)
-			sp.addNumber(rand());
+		for (int i = 0; i < 10; i++)
+			sp.addNumber(rand() % 50 - 50 / 2);
+		std::cout << std::endl;
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	{
+		Span sp = Span(10);
+		sp.addNumber(1);
+		sp.addNumber(10);
+		sp.addNumber(-2);
+		sp.addNumber(9);
+	
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
