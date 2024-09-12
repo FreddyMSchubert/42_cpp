@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:59:48 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 02:15:38 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/12 02:27:13 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,16 @@ void BitcoinExchange::calculateExchange(const std::string &input_file)
 			}
 
 			std::string date = line.substr(0, delimiterPos);
-			std::string value = line.substr(delimiterPos + std::string(INPUT_FILE_DELIMITER).length());
 			t_date date_struct;
 			try { date_struct = parseDate(date); }
 			catch(const std::exception& e) { std::cerr << e.what() << std::endl; continue; }
+
+			std::string value = line.substr(delimiterPos + std::string(INPUT_FILE_DELIMITER).length());
+			if (value.empty())
+			{
+				std::cerr << "bad input => " << line << std::endl;
+				continue;
+			}
 			double valuef = std::stof(value);
 			if (valuef < 0)
 			{
@@ -104,11 +110,17 @@ void BitcoinExchange::calculateExchange(const std::string &input_file)
 
 t_date BitcoinExchange::parseDate(const std::string &date)
 {
+	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
+		throw std::runtime_error("Error: invalid date format => \"" + date + "\"");
+
 	t_date date_struct;
+
 	date_struct.year = std::stoi(date.substr(0, 4));
 	date_struct.month = std::stoi(date.substr(5, 2));
 	date_struct.day = std::stoi(date.substr(8, 2));
+
 	if (date_struct.month < 1 || date_struct.month > 12 || date_struct.day < 1 || date_struct.day > 31)
 		throw std::runtime_error("Error: bad input => " + date);
+
 	return date_struct;
 }
