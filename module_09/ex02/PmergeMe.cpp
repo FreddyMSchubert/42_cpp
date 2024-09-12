@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 05:53:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/12 20:07:58 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,15 @@ std::vector<int> PMergeMe::insertionSort(std::vector<int> a)
 		a[j + 1] = key;
 	}
 	return a;
+}
+
+/* ----- UTILS ----- */
+int	PMergeMe::jacobsthalSequence(int n)
+{
+	if (n == 0)
+		return 0;
+	else if (n == 1)
+		return 1;
+	else
+		return jacobsthalSequence(n - 1) + 2 * jacobsthalSequence(n - 2);
 }
