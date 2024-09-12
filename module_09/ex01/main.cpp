@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 02:32:20 by freddy            #+#    #+#             */
-/*   Updated: 2024/09/12 03:34:52 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/12 04:52:28 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <iostream>
 #include <sstream>
-#include <stack>
+#include <deque>
 
 #define PRINT_CALCULATION false
 
@@ -37,10 +37,10 @@ double applyOperation(double num1, double num2, char op)
 	}
 }
 
-void printCalculation(std::vector<std::string>& tokens)
+void printCalculation(std::deque<std::string>& tokens)
 {
-	for (int i = 0; i < (int)tokens.size(); i++)
-		std::cout << tokens[i] << " ";
+	for (const auto& token : tokens)
+		std::cout << token << " ";
 	std::cout << std::endl;
 }
 
@@ -52,15 +52,12 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	std::vector<std::string> tokens;
+	std::deque<std::string> tokens;
 
 	std::istringstream iss(argv[1]);
 	std::string arg;
 	while (iss >> arg)
 		tokens.push_back(arg);
-
-	std::stack<char> rev_operators;
-	std::stack<double> rev_numbers;
 
 	if (PRINT_CALCULATION)
 		printCalculation(tokens);
@@ -71,18 +68,18 @@ int main(int argc, char **argv)
 		while (operationApplied)
 		{
 			operationApplied = false;
-			for (int i = 0; i < (int)tokens.size(); ++i)
+			for (auto it = tokens.begin(); it != tokens.end(); ++it)
 			{
 				if (tokens.size() <= 2)
 					break ;
-				if (isOperator(tokens[i]) && tokens.size() > 2)
+				if (isOperator(*it) && std::distance(tokens.begin(), it) >= 2)
 				{
-					double num1 = std::stod(tokens[i - 2]);
-					double num2 = std::stod(tokens[i - 1]);
-					double result = applyOperation(num1, num2, tokens[i][0]);
+					auto num1 = std::stod(*(it - 2));
+					auto num2 = std::stod(*(it - 1));
+					double result = applyOperation(num1, num2, (*it)[0]);
 
-					tokens.erase(tokens.begin() + i - 2, tokens.begin() + i + 1);
-					tokens.insert(tokens.begin() + i - 2, std::to_string(result));
+					*(it - 2) = std::to_string(result);
+					tokens.erase(it - 1, it + 1);
 
 					operationApplied = true;
 					if (PRINT_CALCULATION && tokens.size() > 1)
@@ -93,7 +90,7 @@ int main(int argc, char **argv)
 			}
 		}
 		if (tokens.size() != 1) throw std::runtime_error("Invalid expression");
-		std::cout << "Result: " << tokens[0] << std::endl;
+		std::cout << "Result: " << tokens.front() << std::endl;
 	}
 	catch (const std::exception& e)
 	{
