@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:59:48 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 02:11:42 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/12 02:15:38 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ void BitcoinExchange::calculateExchange(const std::string &input_file)
 			t_date date_struct;
 			try { date_struct = parseDate(date); }
 			catch(const std::exception& e) { std::cerr << e.what() << std::endl; continue; }
-			float valuef = std::stof(value);
-			std::cout << "Unparsed value: " << value << std::endl;
+			double valuef = std::stof(value);
 			if (valuef < 0)
 			{
 				std::cerr << "Error: not a positive number." << std::endl;
