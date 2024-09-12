@@ -6,7 +6,7 @@
 /*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 01:00:03 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 01:42:47 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/12 01:47:12 by freddy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 #define DATA_FILE "data.csv"
 #define DATA_FILE_DELIMITER ","
 #define DATA_FILE_HEADER "date,exchange_rate"
-#define INPUT_FILE_DELIMITER " - "
+#define INPUT_FILE_DELIMITER " | "
 #define INPUT_FILE_HEADER "date | value"
+
+#define DEBUG true
 
 // assuming 31 as the maximum number of days in a month is fine for this exercise
 typedef struct s_date
