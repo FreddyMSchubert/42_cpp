@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:35:49 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 05:49:59 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:20:20 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int main()
 
 	std::vector<int> a;
 	srand(time(NULL));
-	for (int i = 0; i < 10; i++)
+	int random_amounts = rand() % 25 + 5;
+	std::cout << "Random amounts: " << random_amounts << std::endl;
+	for (int i = 0; i < random_amounts; i++)
 		a.push_back(rand() % 1000);
 	for (int i = 0; i < (int)a.size(); i++)
 		std::cout << a[i] << " ";
@@ -28,6 +30,8 @@ int main()
 	for (int i = 0; i < (int)a.size(); i++)
 		std::cout << a[i] << " ";
 	std::cout << std::endl;
+	
+	std::cout << "Comparisons: " << p.getComparisonsCount() << std::endl;
 
 	return 0;
 }

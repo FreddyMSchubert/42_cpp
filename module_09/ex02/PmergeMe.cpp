@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/13 09:50:34 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:20:08 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 
 	// Split input into pairs
 	std::vector<std::vector<int>> pairs;
-	for (int i = 0; i < input.size(); i += 2)
+	for (int i = 0; i < (int)input.size(); i += 2)
 	{
 		std::vector<int> pair;
 		pair.push_back(input[i]);
@@ -55,7 +55,7 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 
 	// Sort pairs using 1 comp per pair
 	// Larger number takes larger index
-	for (int i = 0; i < pairs.size(); i++)
+	for (int i = 0; i < (int)pairs.size(); i++)
 	{
 		comparisonsCount++;
 		if (pairs[i][0] > pairs[i][1])
@@ -68,6 +68,33 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 
 	// Sort pairs by larger value
 	pairs = recursiveInsertSortPairs(pairs);
+
+	// Creation of S & pend
+	std::vector<int> S;
+	std::vector<int> pend;
+	for (int i = 0; i < (int)pairs.size(); i++)
+	{
+		pend.push_back(pairs[i][0]);
+		S.push_back(pairs[i][1]);
+	}
+	if (has_straggler)
+		pend.push_back(straggler);
+	
+	// --- MERGE ---
+
+	// First element of pend can be added to S without comparison
+	S.insert(S.begin(), pend[0]);
+	pend.erase(pend.begin());
+
+	for (int i = 0; i < (int)pend.size(); i++)
+	{
+		int insertionPoint = binarySearch(S, pend[i]);
+		if (S[insertionPoint] == pend[i])
+			continue;
+		S.insert(S.begin() + insertionPoint, pend[i]);
+	}
+
+	return S;
 }
 
 std::vector<std::vector<int>> PMergeMe::recursiveInsertSortPairs(std::vector<std::vector<int>> pairs)
@@ -89,7 +116,7 @@ std::vector<std::vector<int>> PMergeMe::recursiveInsertSortPairs(std::vector<std
 	int i = 0;
 	int j = 0;
 
-	while (i < left.size() && j < right.size())
+	while (i < (int)left.size() && j < (int)right.size())
 	{
 		comparisonsCount++;
 		if (left[i][1] < right[j][1])
@@ -104,12 +131,34 @@ std::vector<std::vector<int>> PMergeMe::recursiveInsertSortPairs(std::vector<std
 		}
 	}
 
-	while (i < left.size())
+	while (i < (int)left.size())
 		sorted.push_back(left[i++]);
-	while (j < right.size())
+	while (j < (int)right.size())
 		sorted.push_back(right[j++]);
 
 	return sorted;
+}
+
+int PMergeMe::binarySearch(std::vector<int> arr, int item)
+{
+	int low = 0;
+	int high = arr.size() - 1;
+	int mid;
+
+	while (low <= high)
+	{
+		mid = low + (high - low) / 2;
+		comparisonsCount++;
+		if (arr[mid] == item)
+			return mid;
+		comparisonsCount++;
+		if (arr[mid] < item)
+			low = mid + 1;
+		else
+			high = mid - 1;
+	}
+
+	return low;
 }
 
 /* ----- UTILS ----- */
@@ -121,4 +170,9 @@ int	PMergeMe::jacobsthalSequence(int n)
 		return 1;
 	else
 		return jacobsthalSequence(n - 1) + 2 * jacobsthalSequence(n - 2);
+}
+
+int PMergeMe::getComparisonsCount()
+{
+	return comparisonsCount;
 }
