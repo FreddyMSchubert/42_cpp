@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/13 09:38:13 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 09:50:34 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 		return input;
 	if (input.size() == 2)
 	{
+		comparisonsCount++;
 		if (input[0] > input[1])
 		{
 			int temp = input[0];
@@ -56,6 +57,7 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 	// Larger number takes larger index
 	for (int i = 0; i < pairs.size(); i++)
 	{
+		comparisonsCount++;
 		if (pairs[i][0] > pairs[i][1])
 		{
 			int temp = pairs[i][0];
@@ -65,6 +67,7 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 	}
 
 	// Sort pairs by larger value
+	pairs = recursiveInsertSortPairs(pairs);
 }
 
 std::vector<std::vector<int>> PMergeMe::recursiveInsertSortPairs(std::vector<std::vector<int>> pairs)
@@ -82,6 +85,31 @@ std::vector<std::vector<int>> PMergeMe::recursiveInsertSortPairs(std::vector<std
 	// Merge
 
 	std::vector<std::vector<int>> sorted;
+
+	int i = 0;
+	int j = 0;
+
+	while (i < left.size() && j < right.size())
+	{
+		comparisonsCount++;
+		if (left[i][1] < right[j][1])
+		{
+			sorted.push_back(left[i]);
+			i++;
+		}
+		else
+		{
+			sorted.push_back(right[j]);
+			j++;
+		}
+	}
+
+	while (i < left.size())
+		sorted.push_back(left[i++]);
+	while (j < right.size())
+		sorted.push_back(right[j++]);
+
+	return sorted;
 }
 
 /* ----- UTILS ----- */
