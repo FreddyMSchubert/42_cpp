@@ -1,79 +1,87 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*   PMergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 20:07:58 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 09:38:13 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PMergeMe.hpp"
 
+// FORD JOHNSON MERGE INSERTION SORT
+
 /* ----- VECTOR ----- */
 
-std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> a)
+std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 {
-	if (a.size() <= 1)
-		return a;
-	else if (a.size() <= THRESHOLD)
-		return insertionSort(a);
-
-	int mid = a.size() / 2;
-	std::vector<int> a1 = mergeInsertionSort(std::vector<int>(a.begin(), a.begin() + mid));
-	std::vector<int> a2 = mergeInsertionSort(std::vector<int>(a.begin() + mid, a.end()));
-
-	return mergeAndInsert(a1, a2);
-}
-
-std::vector<int> PMergeMe::mergeAndInsert(std::vector<int> a1, std::vector<int> a2)
-{
-	std::vector<int> result;
-	result.reserve(a1.size() + a2.size());
-
-	int j = 0;
-	for (int elem : a1)
+	// Defined Cases
+	if (input.size() == 1 || input.size() == 0)
+		return input;
+	if (input.size() == 2)
 	{
-		int pos = binarySearch(a2, elem);
-		result.insert(result.end(), a2.begin() + j, a2.begin() + pos);
-	}
-
-	result.insert(result.end(), a2.begin(), a2.end());
-
-	return result;
-}
-
-int PMergeMe::binarySearch(std::vector<int> a, int target)
-{
-	int low = 0;
-	int high = a.size() - 1;
-	while (low <= high)
-	{
-		int mid = low + (high - low) / 2;
-		if (a[mid] < target)
-			low = mid + 1;
-		else
-			high = mid - 1;
-	}
-	return low;
-}
-
-std::vector<int> PMergeMe::insertionSort(std::vector<int> a)
-{
-	for (int i = 1; i < (int)a.size(); i++)
-	{
-		int key = a[i];
-		int j = i - 1;
-		while (j >= 0 && a[j] > key)
+		if (input[0] > input[1])
 		{
-			a[j + 1] = a[j];
-			j--;
+			int temp = input[0];
+			input[0] = input[1];
+			input[1] = temp;
 		}
-		a[j + 1] = key;
+		return input;
 	}
-	return a;
+
+	// Determine Straggler
+	int straggler = 0;
+	bool has_straggler = false;
+	if (input.size() % 2 != 0)
+	{
+		straggler = input.back();
+		input.pop_back();
+		has_straggler = true;
+	}
+
+	// Split input into pairs
+	std::vector<std::vector<int>> pairs;
+	for (int i = 0; i < input.size(); i += 2)
+	{
+		std::vector<int> pair;
+		pair.push_back(input[i]);
+		pair.push_back(input[i + 1]);
+		pairs.push_back(pair);
+	}
+
+	// Sort pairs using 1 comp per pair
+	// Larger number takes larger index
+	for (int i = 0; i < pairs.size(); i++)
+	{
+		if (pairs[i][0] > pairs[i][1])
+		{
+			int temp = pairs[i][0];
+			pairs[i][0] = pairs[i][1];
+			pairs[i][1] = temp;
+		}
+	}
+
+	// Sort pairs by larger value
+}
+
+std::vector<std::vector<int>> PMergeMe::recursiveInsertSortPairs(std::vector<std::vector<int>> pairs)
+{
+	if (pairs.size() <= 1)
+		return pairs;
+	
+	int mid = pairs.size() / 2;
+	std::vector<std::vector<int>> left(pairs.begin(), pairs.begin() + mid);
+	std::vector<std::vector<int>> right(pairs.begin() + mid, pairs.end());
+
+	left = recursiveInsertSortPairs(left);
+	right = recursiveInsertSortPairs(right);
+
+	// Merge
+
+	std::vector<std::vector<int>> sorted;
 }
 
 /* ----- UTILS ----- */

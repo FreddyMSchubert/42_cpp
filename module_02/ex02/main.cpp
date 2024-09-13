@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 09:23:49 by fschuber          #+#    #+#             */
-/*   Updated: 2024/08/26 13:36:22 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 09:12:10 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	main()
 	std::cout << "42 / 0 = " << (Fixed(42) / Fixed(0)) << std::endl;
 	std::cout << (3.0f / 0.0f) << std::endl;
 	std::cout << Fixed(3.0f / 0.0f) << std::endl;
+
+	std::cout << (Fixed(b) / Fixed(10)) << std::endl;
 
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:48 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 20:05:50 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 09:34:21 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ class PMergeMe
 		std::vector<int> mergeInsertionSort(std::vector<int> a);
 
 	private:
-		std::vector<int> mergeAndInsert(std::vector<int> a1, std::vector<int> a2);
-		int binarySearch(std::vector<int> a, int target);
-		std::vector<int> insertionSort(std::vector<int> a);
 		int	jacobsthalSequence(int n);
+
+		std::vector<std::vector<int>> recursiveInsertSortPairs(std::vector<std::vector<int>> pairs);
 };

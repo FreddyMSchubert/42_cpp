@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: freddy <freddy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:59:48 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/12 02:27:13 by freddy           ###   ########.fr       */
+/*   Updated: 2024/09/13 09:43:27 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,19 @@ void BitcoinExchange::calculateExchange(const std::string &input_file)
 				continue;
 			}
 
+			int find_attempts = 0;
 			while (data.find(date_struct) == data.end())
+			{
 				date_struct--;
+				find_attempts++;
+				if (find_attempts > 365)
+				{
+					std::cerr << "Error: no exchange rate found for " << date << " within reasonable range." << std::endl;
+					break;
+				}
+			}
+			if (find_attempts > 365)
+				continue;
 			double btc = data[date_struct];
 
 			if (DEBUG)
