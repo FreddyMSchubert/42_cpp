@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/13 14:58:14 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:19:30 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,19 +90,13 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 	int prev_pend_index = 0;
 	int prev_max_pend_index = 0;
 
-	while (prev_pend_index < (int)pend.size())
+	while (prev_pend_index < (int)pend.size() - 1)
 	{
-		std::cout << prev_pend_index << " " << pend_index << " - ";
-		std::cout << "S: ";
-		for (int i = 0; i < (int)S.size(); i++)
-			std::cout << S[i] << " ";
-		std::cout << std::endl;
-
 		if (pend_index == prev_pend_index)
 		{
 			jacobs_index++;
 			prev_pend_index = prev_max_pend_index;
-			pend_index = jacobsthalSequence(jacobs_index) * 2;
+			pend_index = jacobsthalSequence(jacobs_index) - 1;
 			prev_max_pend_index = pend_index;
 		}
 		else
@@ -111,10 +105,13 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 		}
 		while (pend_index >= (int)pend.size())
 			pend_index--;
+		if (prev_pend_index >= (int)pend.size() - 1)
+			break;
 		if (pend_index == prev_pend_index)
 			continue;
 
 		int insertIndex = binarySearch(S, pend[pend_index], S.size() - 1);
+		std::cout << pend[pend_index] << std::endl;
 		S.insert(S.begin() + insertIndex, pend[pend_index]);
 	}
 

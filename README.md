@@ -19,3 +19,4 @@ Each module has to be handed in seperately.
 | 9 | ✅ | 🔁 | 🔁 | 🔁 | 🔁 |
 
 // => https://github.com/PunkChameleon/ford-johnson-merge-insertion-sort
+// => https://github.com/Mikastiv/FordJohnsonSort
