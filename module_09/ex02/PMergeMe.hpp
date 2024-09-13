@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:48 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/13 11:19:57 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:29:49 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ class PMergeMe
 		unsigned int	comparisonsCount = 0;
 
 		int	jacobsthalSequence(int n);
-		int binarySearch(std::vector<int> arr, int item);
+		int binarySearch(std::vector<int> arr, int item, int upperBound);
 		std::vector<std::vector<int>> recursiveInsertSortPairs(std::vector<std::vector<int>> pairs);
 };

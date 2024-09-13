@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/13 11:20:08 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:58:14 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,38 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 
 	// First element of pend can be added to S without comparison
 	S.insert(S.begin(), pend[0]);
-	pend.erase(pend.begin());
+	
+	int jacobs_index = 0;
+	int pend_index = 0;
+	int prev_pend_index = 0;
+	int prev_max_pend_index = 0;
 
-	for (int i = 0; i < (int)pend.size(); i++)
+	while (prev_pend_index < (int)pend.size())
 	{
-		int insertionPoint = binarySearch(S, pend[i]);
-		if (S[insertionPoint] == pend[i])
+		std::cout << prev_pend_index << " " << pend_index << " - ";
+		std::cout << "S: ";
+		for (int i = 0; i < (int)S.size(); i++)
+			std::cout << S[i] << " ";
+		std::cout << std::endl;
+
+		if (pend_index == prev_pend_index)
+		{
+			jacobs_index++;
+			prev_pend_index = prev_max_pend_index;
+			pend_index = jacobsthalSequence(jacobs_index) * 2;
+			prev_max_pend_index = pend_index;
+		}
+		else
+		{
+			pend_index--;
+		}
+		while (pend_index >= (int)pend.size())
+			pend_index--;
+		if (pend_index == prev_pend_index)
 			continue;
-		S.insert(S.begin() + insertionPoint, pend[i]);
+
+		int insertIndex = binarySearch(S, pend[pend_index], S.size() - 1);
+		S.insert(S.begin() + insertIndex, pend[pend_index]);
 	}
 
 	return S;
@@ -139,10 +163,10 @@ std::vector<std::vector<int>> PMergeMe::recursiveInsertSortPairs(std::vector<std
 	return sorted;
 }
 
-int PMergeMe::binarySearch(std::vector<int> arr, int item)
+int PMergeMe::binarySearch(std::vector<int> arr, int item, int upperBound)
 {
 	int low = 0;
-	int high = arr.size() - 1;
+	int high = upperBound;
 	int mid;
 
 	while (low <= high)
