@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 02:32:20 by freddy            #+#    #+#             */
-/*   Updated: 2024/09/12 04:52:28 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/14 17:46:38 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <iostream>
 #include <sstream>
-#include <deque>
+#include <list>
 
 #define PRINT_CALCULATION false
 
@@ -37,7 +37,7 @@ double applyOperation(double num1, double num2, char op)
 	}
 }
 
-void printCalculation(std::deque<std::string>& tokens)
+void printCalculation(std::list<std::string>& tokens)
 {
 	for (const auto& token : tokens)
 		std::cout << token << " ";
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	std::deque<std::string> tokens;
+	std::list<std::string> tokens;
 
 	std::istringstream iss(argv[1]);
 	std::string arg;
@@ -74,12 +74,14 @@ int main(int argc, char **argv)
 					break ;
 				if (isOperator(*it) && std::distance(tokens.begin(), it) >= 2)
 				{
-					auto num1 = std::stod(*(it - 2));
-					auto num2 = std::stod(*(it - 1));
+					auto it1 = std::prev(it, 2);
+					auto it2 = std::prev(it, 1);
+					double num1 = std::stod(*it1);
+					double num2 = std::stod(*it2);
 					double result = applyOperation(num1, num2, (*it)[0]);
 
-					*(it - 2) = std::to_string(result);
-					tokens.erase(it - 1, it + 1);
+					*it1 = std::to_string(result);
+					tokens.erase(it2, std::next(it));
 
 					operationApplied = true;
 					if (PRINT_CALCULATION && tokens.size() > 1)

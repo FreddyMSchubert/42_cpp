@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/13 17:00:06 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/14 17:28:54 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,176 @@ int PMergeMe::binarySearch(std::vector<int> arr, int item)
 
 	return low;
 }
+
+/* ----- deque ----- */
+
+std::deque<int> PMergeMe::mergeInsertionSort(std::deque<int> input)
+{
+	// Defined Cases
+	if (input.size() == 1 || input.size() == 0)
+		return input;
+	if (input.size() == 2)
+	{
+		comparisonsCount++;
+		if (input[0] > input[1])
+		{
+			int temp = input[0];
+			input[0] = input[1];
+			input[1] = temp;
+		}
+		return input;
+	}
+
+	// Determine Straggler
+	int straggler = 0;
+	bool has_straggler = false;
+	if (input.size() % 2 != 0)
+	{
+		straggler = input.back();
+		input.pop_back();
+		has_straggler = true;
+	}
+
+	// Split input into pairs
+	std::deque<std::deque<int>> pairs;
+	for (int i = 0; i < (int)input.size(); i += 2)
+	{
+		std::deque<int> pair;
+		pair.push_back(input[i]);
+		pair.push_back(input[i + 1]);
+		pairs.push_back(pair);
+	}
+
+	// Sort pairs using 1 comp per pair
+	// Larger number takes larger index
+	for (int i = 0; i < (int)pairs.size(); i++)
+	{
+		comparisonsCount++;
+		if (pairs[i][0] > pairs[i][1])
+		{
+			int temp = pairs[i][0];
+			pairs[i][0] = pairs[i][1];
+			pairs[i][1] = temp;
+		}
+	}
+
+	// Sort pairs by larger value
+	pairs = recursiveInsertSortPairs(pairs);
+
+	// Creation of S & pend
+	std::deque<int> S;
+	std::deque<int> pend;
+	for (int i = 0; i < (int)pairs.size(); i++)
+	{
+		pend.push_back(pairs[i][0]);
+		S.push_back(pairs[i][1]);
+	}
+	if (has_straggler)
+		pend.push_back(straggler);
+	
+	// --- MERGE ---
+
+	// First element of pend can be added to S without comparison
+	S.insert(S.begin(), pend[0]);
+	
+	int jacobs_index = 0;
+	int pend_index = 0;
+	int prev_pend_index = 0;
+	int prev_max_pend_index = 0;
+	int lastInsertIndex = 0;
+
+	while (prev_pend_index < (int)pend.size() - 1)
+	{
+		if (pend_index == prev_pend_index)
+		{
+			jacobs_index++;
+			prev_pend_index = prev_max_pend_index;
+			pend_index = jacobsthalSequence(jacobs_index) - 1;
+			prev_max_pend_index = pend_index;
+		}
+		else
+		{
+			pend_index--;
+		}
+		while (pend_index >= (int)pend.size())
+			pend_index--;
+		if (prev_pend_index >= (int)pend.size() - 1)
+			break;
+		if (pend_index == prev_pend_index)
+			continue;
+
+		int insertIndex = binarySearch(S, pend[pend_index]);
+		lastInsertIndex = insertIndex;
+		S.insert(S.begin() + insertIndex, pend[pend_index]);
+	}
+
+	return S;
+}
+
+std::deque<std::deque<int>> PMergeMe::recursiveInsertSortPairs(std::deque<std::deque<int>> pairs)
+{
+	if (pairs.size() <= 1)
+		return pairs;
+	
+	int mid = pairs.size() / 2;
+	std::deque<std::deque<int>> left(pairs.begin(), pairs.begin() + mid);
+	std::deque<std::deque<int>> right(pairs.begin() + mid, pairs.end());
+
+	left = recursiveInsertSortPairs(left);
+	right = recursiveInsertSortPairs(right);
+
+	// Merge
+
+	std::deque<std::deque<int>> sorted;
+
+	int i = 0;
+	int j = 0;
+
+	while (i < (int)left.size() && j < (int)right.size())
+	{
+		comparisonsCount++;
+		if (left[i][1] < right[j][1])
+		{
+			sorted.push_back(left[i]);
+			i++;
+		}
+		else
+		{
+			sorted.push_back(right[j]);
+			j++;
+		}
+	}
+
+	while (i < (int)left.size())
+		sorted.push_back(left[i++]);
+	while (j < (int)right.size())
+		sorted.push_back(right[j++]);
+
+	return sorted;
+}
+
+int PMergeMe::binarySearch(std::deque<int> arr, int item)
+{
+	int low = 0;
+	int high = arr.size() - 1;
+	int mid;
+
+	while (low <= high)
+	{
+		mid = low + (high - low) / 2;
+		comparisonsCount++;
+		if (arr[mid] == item)
+			return mid;
+		comparisonsCount++;
+		if (arr[mid] < item)
+			low = mid + 1;
+		else
+			high = mid - 1;
+	}
+
+	return low;
+}
+
 
 /* ----- UTILS ----- */
 int	PMergeMe::jacobsthalSequence(int n)
