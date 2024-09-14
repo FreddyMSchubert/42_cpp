@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:19:27 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/13 16:19:30 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:00:06 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 	int pend_index = 0;
 	int prev_pend_index = 0;
 	int prev_max_pend_index = 0;
+	int lastInsertIndex = 0;
 
 	while (prev_pend_index < (int)pend.size() - 1)
 	{
@@ -110,8 +111,8 @@ std::vector<int> PMergeMe::mergeInsertionSort(std::vector<int> input)
 		if (pend_index == prev_pend_index)
 			continue;
 
-		int insertIndex = binarySearch(S, pend[pend_index], S.size() - 1);
-		std::cout << pend[pend_index] << std::endl;
+		int insertIndex = binarySearch(S, pend[pend_index]);
+		lastInsertIndex = insertIndex;
 		S.insert(S.begin() + insertIndex, pend[pend_index]);
 	}
 
@@ -160,10 +161,10 @@ std::vector<std::vector<int>> PMergeMe::recursiveInsertSortPairs(std::vector<std
 	return sorted;
 }
 
-int PMergeMe::binarySearch(std::vector<int> arr, int item, int upperBound)
+int PMergeMe::binarySearch(std::vector<int> arr, int item)
 {
 	int low = 0;
-	int high = upperBound;
+	int high = arr.size() - 1;
 	int mid;
 
 	while (low <= high)
