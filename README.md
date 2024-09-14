@@ -16,7 +16,8 @@ Each module has to be handed in seperately.
 | 6 | ✅ | ✅ | ✅ | 100/100 ✨ | 10.09.2024 |
 | 7 | ✅ | ✅ | ✅ | 100/100 ✨ | 11.09.2024 |
 | 8 | ✅ | ✅ | ✅ | 100/100 ✨ | 11.09.2024 |
-| 9 | ✅ | 🔁 | 🔁 | 🔁 | 🔁 |
+| 9 | ✅ | ✅ | ✅ | 100/100 ✨ | 14.09.2024 |
 
 // => https://github.com/PunkChameleon/ford-johnson-merge-insertion-sort
+
 // => https://github.com/Mikastiv/FordJohnsonSort
