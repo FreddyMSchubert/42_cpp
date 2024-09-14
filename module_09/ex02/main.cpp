@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 05:35:49 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/14 17:31:11 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/14 19:08:44 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ void test(std::vector<int> input)
 	PMergeMe pv;
 
 	auto start = std::chrono::high_resolution_clock::now();
-	input = pv.mergeInsertionSort(input);
+	std::vector<int> inputv = pv.mergeInsertionSort(input);
 	auto end = std::chrono::high_resolution_clock::now();
 
 	std::cout << "After: ";
-	for (int i = 0; i < (int)input.size(); i++)
-		std::cout << input[i] << " ";
+	for (int i = 0; i < (int)inputv.size(); i++)
+		std::cout << inputv[i] << " ";
 	std::cout << std::endl;
 	
 	auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 
-	// std::cout << "Comparisons: " << pv.getComparisonsCount() << std::endl;
+	std::cout << "Comparisons: " << pv.getComparisonsCount() << std::endl;
 
-	std::cout << "Time to process a range of " << input.size() << " elements with std::vector: " << duration << " us" << std::endl;
+	std::cout << "Time to process a range of " << inputv.size() << " elements with std::vector: " << duration << " us" << std::endl;
 
 	PMergeMe pd;
 	std::deque<int> inputd(input.begin(), input.end());
@@ -48,7 +48,7 @@ void test(std::vector<int> input)
 	inputd = pd.mergeInsertionSort(inputd);
 	auto endd = std::chrono::high_resolution_clock::now();
 
-	// std::cout << "Comparisons: " << pd.getComparisonsCount() << std::endl;
+	std::cout << "Comparisons: " << pd.getComparisonsCount() << std::endl;
 
 	std::cout << "Time to process a range of " << inputd.size() << " elements with std::deque: " << std::chrono::duration_cast<std::chrono::microseconds>(endd - startd).count() << " us" << std::endl;
 }

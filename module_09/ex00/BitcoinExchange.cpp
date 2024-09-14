@@ -6,7 +6,7 @@
 /*   By: fschuber <fschuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:59:48 by fschuber          #+#    #+#             */
-/*   Updated: 2024/09/13 09:43:27 by fschuber         ###   ########.fr       */
+/*   Updated: 2024/09/14 18:41:23 by fschuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ BitcoinExchange::BitcoinExchange()
 		}
 		catch(const std::exception& e)
 		{
-			throw std::runtime_error(std::string("Format Error: \"") + line + "\": " + e.what());
+			std::cout << std::string("Format Error: \"") + line + "\": " + e.what() << std::endl;
+			continue;
 		}
 	}
 }
@@ -79,12 +80,12 @@ void BitcoinExchange::calculateExchange(const std::string &input_file)
 				continue;
 			}
 			double valuef = std::stof(value);
-			if (valuef < 0)
+			if (valuef <= 0)
 			{
-				std::cerr << "Error: not a positive number." << std::endl;
+				std::cerr << "Error: too small a number." << std::endl;
 				continue;
 			}
-			if (valuef > std::numeric_limits<int>::max())
+			if (valuef >= 1000)
 			{
 				std::cerr << "Error: too large a number." << std::endl;
 				continue;
